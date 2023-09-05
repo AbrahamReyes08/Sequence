@@ -137,9 +137,12 @@ public class Tablero extends javax.swing.JFrame {
         Mazo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         NombreMazoTurno = new javax.swing.JLabel();
-        jButton101 = new javax.swing.JButton();
         tiempoLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        CardUsed = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        instrucDiscart = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -478,35 +481,52 @@ public class Tablero extends javax.swing.JFrame {
         jButton107.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Mazo2.add(jButton107);
 
-        getContentPane().add(Mazo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, 190, 100));
+        getContentPane().add(Mazo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 250, 190, 100));
 
+        Mazo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png"))); // NOI18N
         Mazo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Mazo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MazoActionPerformed(evt);
             }
         });
-        getContentPane().add(Mazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 390, 80, 50));
+        getContentPane().add(Mazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 75, 55));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 650, 90, 10));
 
         NombreMazoTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NombreMazoTurno.setText("Mazo Jugador 1");
-        getContentPane().add(NombreMazoTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(722, 160, 190, -1));
-
-        jButton101.setText("CambiarTurno");
-        getContentPane().add(jButton101, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, 120, -1));
+        getContentPane().add(NombreMazoTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, 190, -1));
 
         tiempoLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         tiempoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tiempoLabel.setText("00:00");
+        tiempoLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "TIEMPO RESTANTE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         tiempoLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        getContentPane().add(tiempoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 540, 130, 40));
+        getContentPane().add(tiempoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 540, 130, 60));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Carta Utilizada");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 150, 70));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 150, -1));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Mazo Comun");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 390, 75, 55));
+
+        CardUsed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CardUsed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png"))); // NOI18N
+        getContentPane().add(CardUsed, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 90, 130, 60));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Anteriormente");
+        jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 150, 150, -1));
+
+        instrucDiscart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        instrucDiscart.setText("<html> Elige la carta de tu mazo que deseas descartar <html>");
+        getContentPane().add(instrucDiscart, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 360, 170, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -559,13 +579,14 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JLabel CardUsed;
     public static javax.swing.JButton Mazo;
     private javax.swing.JPanel Mazo2;
     public static javax.swing.JLabel NombreMazoTurno;
+    public static javax.swing.JLabel instrucDiscart;
     public static javax.swing.JButton jButton1;
     public static javax.swing.JButton jButton10;
     public static javax.swing.JButton jButton100;
-    public static javax.swing.JButton jButton101;
     public static javax.swing.JButton jButton102;
     public static javax.swing.JButton jButton103;
     public static javax.swing.JButton jButton104;
@@ -670,7 +691,9 @@ public class Tablero extends javax.swing.JFrame {
     public static javax.swing.JButton jButton98;
     public static javax.swing.JButton jButton99;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JLabel tiempoLabel;
     // End of variables declaration//GEN-END:variables
