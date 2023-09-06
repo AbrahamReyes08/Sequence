@@ -202,7 +202,7 @@ public class Sequence implements ActionListener{
         ponerImagenString(1,8,"18","10Corazon","10Corazon.png");
         ponerImagenString(1,9,"19","10Picas","10Picas.png");
         ponerImagenString(2,0,"20","7Trebol","7Trebol.png");
-        ponerImagenString(2,1,"21","AsTrebol","AsTrebol.png");
+        ponerImagenString(2,1,"21","AsPicas","AsPicas.png");
         ponerImagenString(2,2,"22","2Diamantes","2Diamantes.png");
         ponerImagenString(2,3,"23","3Diamantes","3Diamantes.png");
         ponerImagenString(2,4,"24","4Diamantes","4Diamantes.png");
@@ -287,10 +287,10 @@ public class Sequence implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
             posicionActual = getBotonPosicionString(ae.getSource());
             
-                if(isCurrentPieceDiscart(posicionActual) && cartasRobadas==0) {
+                if(posicionActual.equals("discart") && cartasRobadas==0) {
                     Tablero.instrucDiscart.setVisible(true);
                     quiereDescartar=true;
-                } else if(cartasRobadas==1) {
+                } else if(cartasRobadas==1 && posicionActual.equals("discart")) {
                     JOptionPane.showMessageDialog(null, "Solo puedes descartar una carta por turno.", "Error", JOptionPane.INFORMATION_MESSAGE);
                 } 
                 
@@ -306,18 +306,18 @@ public class Sequence implements ActionListener{
                             } else if(turno.equals("Jugador4")) {
                                 agarrarNuevaCartaDeMazo(mazo4, posicionAntigua);
                             }
-                            cartasRobadas=0;
+                            cartasRobadas=1;
                             posicionAntigua=null;
                             quiereDescartar=false;
                             Tablero.instrucDiscart.setVisible(false);
                     }
                 }
             
-            if (isCurrentPieceDeck(posicionActual)) {
+            if (isCurrentPieceDeck(posicionActual) ) {
                 System.out.println("si es de deck");
                 posicionAntigua = posicionActual;
                 dimeLaCasillaD(posicionAntigua);
-            } else if (isCurrentPieceTab(posicionActual) && posicionAntigua!=null) {
+            } else if (isCurrentPieceTab(posicionActual)) {
                 posicionNueva = getBotonPosicionString(ae.getSource());
                 dimeLaCasilla(posicionNueva);
                 System.out.println("ES de tab");
@@ -325,22 +325,22 @@ public class Sequence implements ActionListener{
                     if(turno.equals("Jugador1")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"J1ocupada" , "ficha1.png");
+                        ponerFicha(posicionNueva,"j1ocupada" , "ficha1.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } else if(turno.equals("Jugador2")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"J2ocupada" , "ficha2.png");
+                        ponerFicha(posicionNueva,"j2ocupada" , "ficha2.png");
                         ponerNuevaCarta(mazo2, posicionAntigua);
                     } else if(turno.equals("Jugador3")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"J2ocupada" , "ficha3.png");
+                        ponerFicha(posicionNueva,"j3ocupada" , "ficha3.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } else if(turno.equals("Jugador4")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"J2ocupada" , "ficha4.png");
+                        ponerFicha(posicionNueva,"j4ocupada" , "ficha4.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     }
                     cartasRobadas=0;
@@ -352,7 +352,21 @@ public class Sequence implements ActionListener{
                 }
             }
        
-            
+            if ( posicionActual!=null && isCurrentPieceJacks(posicionActual )){
+                System.out.println("es jack");
+                posicionAntigua=posicionActual;
+            }   if (posicionAntigua!=null) { 
+                    if (isCurrentPieceJacks(posicionAntigua) && isCurrentPieceTab(posicionActual)) {
+                        posicionNueva=posicionActual;
+                        num=num+1;
+                        vaciarBoton(posicionAntigua);
+                        ponerFicha(posicionActual, "bloqueada" ,"block.png");
+                        guardarFichaUtilizada(posicionNueva, num);
+                        cambiarTurno();
+                        cartasRobadas=0;
+                        iniciarCronometro();
+                    }
+            }
     }
     
     private void dimeLaCasilla(String posicion) {
@@ -384,10 +398,10 @@ public class Sequence implements ActionListener{
         return false;
     }
     
-    private boolean isCurrentPieceDiscart(String posicion) {
+    private boolean isCurrentPieceJacks(String posicion) {
         char letra=posicion.charAt(0);
-        if (letra=='d') {
-            System.out.println("Sui es de discart");
+        if (letra=='J') {
+            System.out.println("Sui es de Jack");
             return true;
         }
         return false;
@@ -395,7 +409,7 @@ public class Sequence implements ActionListener{
     
     private boolean isCurrentPieceTab(String posicion) {
         char letra=posicion.charAt(0);
-        if (letra!='C' && letra!='d') {
+        if (letra!='C' && letra!='d' && letra!='b') {
             System.out.println("es de tab");
             return true;
         }
@@ -416,9 +430,7 @@ public class Sequence implements ActionListener{
         int x2 = Character.getNumericValue(posicionNueva.charAt(1));
         int y2 = Character.getNumericValue(posicionNueva.charAt(0));
         
-        
-        
-        if(deck[y][x].equals(tablero[y2][x2])){
+                if(deck[y][x].equals(tablero[y2][x2])){
             System.out.println("si es posible");
             
             deck[y][x].equals("");
@@ -426,6 +438,27 @@ public class Sequence implements ActionListener{
             return true;
         }
         return false;
+    }
+    
+    private void bloquearBoton(String posNueva) {
+        int x2 = Character.getNumericValue(posicionNueva.charAt(1));
+        int y2 = Character.getNumericValue(posicionNueva.charAt(0));
+        
+        boton(posNueva).setIcon(null);
+    }
+    
+    private void vaciarBoton(String PosAntigua) {
+        int x = Character.getNumericValue(posicionAntigua.charAt(1));
+        int y;
+        if (x>3) {
+            y=1;
+            x=x-4;
+        } else {
+            x=x-1;
+            y=0;
+        }            
+            deck[y][x].equals("");
+            boton(PosAntigua).setIcon(null);
     }
     
     private void guardarFichaUtilizada(String posNueva, int num) {

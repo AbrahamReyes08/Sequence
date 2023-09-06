@@ -15,6 +15,7 @@ public class Tablero extends javax.swing.JFrame {
      */
     public Tablero() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -526,7 +527,7 @@ public class Tablero extends javax.swing.JFrame {
 
         instrucDiscart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         instrucDiscart.setText("<html> Elige la carta de tu mazo que deseas descartar <html>");
-        getContentPane().add(instrucDiscart, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 360, 170, 30));
+        getContentPane().add(instrucDiscart, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 360, 160, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
