@@ -342,30 +342,19 @@ public class Sequence implements ActionListener{
                         guardarFichaUtilizada(posicionNueva, num);
                         ponerFicha(posicionNueva,"j4ocupada" , "ficha4.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
-                    }
+                    } 
                     cartasRobadas=0;
                     System.out.println("se puso");
                     cambiarTurno();
                     iniciarCronometro();
-                }else {
-                    System.out.println("no es posible mover");
+                 } else if(sePuedebloquearBoton(posicionAntigua)) {
+                            num=num+1;
+                            guardarFichaUtilizada(posicionNueva, num);
+                            ponerFicha(posicionNueva,"block" , "block.png");
+                            ponerNuevaCarta(mazo1, posicionAntigua);
+                    }else {
+                    System.out.println("no es posible ");
                 }
-            }
-       
-            if ( posicionActual!=null && isCurrentPieceJacks(posicionActual )){
-                System.out.println("es jack");
-                posicionAntigua=posicionActual;
-            }   if (posicionAntigua!=null) { 
-                    if (isCurrentPieceJacks(posicionAntigua) && isCurrentPieceTab(posicionActual)) {
-                        posicionNueva=posicionActual;
-                        num=num+1;
-                        vaciarBoton(posicionAntigua);
-                        ponerFicha(posicionActual, "bloqueada" ,"block.png");
-                        guardarFichaUtilizada(posicionNueva, num);
-                        cambiarTurno();
-                        cartasRobadas=0;
-                        iniciarCronometro();
-                    }
             }
     }
     
@@ -390,18 +379,10 @@ public class Sequence implements ActionListener{
     }
     
     private boolean isCurrentPieceDeck(String posicion) {
+        
         char letra=posicion.charAt(0);
         if (letra=='C' && letra!='d') {
             System.out.println("Sui es de desck");
-            return true;
-        }
-        return false;
-    }
-    
-    private boolean isCurrentPieceJacks(String posicion) {
-        char letra=posicion.charAt(0);
-        if (letra=='J') {
-            System.out.println("Sui es de Jack");
             return true;
         }
         return false;
@@ -440,15 +421,8 @@ public class Sequence implements ActionListener{
         return false;
     }
     
-    private void bloquearBoton(String posNueva) {
-        int x2 = Character.getNumericValue(posicionNueva.charAt(1));
-        int y2 = Character.getNumericValue(posicionNueva.charAt(0));
-        
-        boton(posNueva).setIcon(null);
-    }
-    
-    private void vaciarBoton(String PosAntigua) {
-        int x = Character.getNumericValue(posicionAntigua.charAt(1));
+    private boolean sePuedebloquearBoton(String posAntigua) {
+        int x = Character.getNumericValue(posAntigua.charAt(1));
         int y;
         if (x>3) {
             y=1;
@@ -456,9 +430,19 @@ public class Sequence implements ActionListener{
         } else {
             x=x-1;
             y=0;
-        }            
+        }
+        
+        int x2 = Character.getNumericValue(posicionNueva.charAt(1));
+        int y2 = Character.getNumericValue(posicionNueva.charAt(0));
+        char letra=deck[y][x].charAt(0);
+        if(letra=='J'){
+            System.out.println("SI es posible");
+            
             deck[y][x].equals("");
-            boton(PosAntigua).setIcon(null);
+            boton(posAntigua).setIcon(null);
+            return true;
+        }
+        return false;
     }
     
     private void guardarFichaUtilizada(String posNueva, int num) {
