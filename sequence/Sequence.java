@@ -347,14 +347,14 @@ public class Sequence implements ActionListener{
                     System.out.println("se puso");
                     cambiarTurno();
                     iniciarCronometro();
-                 } else if(sePuedebloquearBoton(posicionAntigua)) {
+                 } /*else if(sePuedebloquearBoton(posicionAntigua)) {
                             num=num+1;
                             guardarFichaUtilizada(posicionNueva, num);
                             ponerFicha(posicionNueva,"block" , "block.png");
                             ponerNuevaCarta(mazo1, posicionAntigua);
                     }else {
                     System.out.println("no es posible ");
-                }
+                }*/
             }
     }
     
