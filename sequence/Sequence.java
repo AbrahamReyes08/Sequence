@@ -321,40 +321,61 @@ public class Sequence implements ActionListener{
                 posicionNueva = getBotonPosicionString(ae.getSource());
                 dimeLaCasilla(posicionNueva);
                 System.out.println("ES de tab");
-                if (ponerFichaDisponible(posicionAntigua,posicionNueva) ){
+                if (posicionAntigua!=null && ponerFichaDisponible(posicionAntigua,posicionNueva) ){
                     if(turno.equals("Jugador1")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j1ocupada" , "ficha1.png");
+                        ponerFicha(posicionNueva,"j1"+CU.get(num) , "ficha1.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } else if(turno.equals("Jugador2")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j2ocupada" , "ficha2.png");
+                        ponerFicha(posicionNueva,"j2" +CU.get(num), "ficha2.png");
                         ponerNuevaCarta(mazo2, posicionAntigua);
                     } else if(turno.equals("Jugador3")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j3ocupada" , "ficha3.png");
+                        ponerFicha(posicionNueva,"j3"+CU.get(num) , "ficha3.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } else if(turno.equals("Jugador4")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j4ocupada" , "ficha4.png");
+                        ponerFicha(posicionNueva,"j4" +CU.get(num), "ficha4.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } 
                     cartasRobadas=0;
                     System.out.println("se puso");
                     cambiarTurno();
                     iniciarCronometro();
-                 } /*else if(sePuedebloquearBoton(posicionAntigua)) {
-                            num=num+1;
-                            guardarFichaUtilizada(posicionNueva, num);
-                            ponerFicha(posicionNueva,"block" , "block.png");
-                            ponerNuevaCarta(mazo1, posicionAntigua);
+                 } else if(posicionAntigua!=null && sePuedeUtilizarJack(posicionAntigua)) {
+                            if(turno.equals("Jugador1")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        ponerFicha(posicionNueva,"j1"+CU.get(num) , "ficha1.png");
+                        ponerNuevaCarta(mazo1, posicionAntigua);
+                    } else if(turno.equals("Jugador2")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        ponerFicha(posicionNueva,"j2" +CU.get(num), "ficha2.png");
+                        ponerNuevaCarta(mazo2, posicionAntigua);
+                    } else if(turno.equals("Jugador3")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        ponerFicha(posicionNueva,"j3"+CU.get(num) , "ficha3.png");
+                        ponerNuevaCarta(mazo1, posicionAntigua);
+                    } else if(turno.equals("Jugador4")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        ponerFicha(posicionNueva,"j4" +CU.get(num), "ficha4.png");
+                        ponerNuevaCarta(mazo1, posicionAntigua);
+                    } 
+                    cartasRobadas=0;
+                    System.out.println("se puso");
+                    cambiarTurno();
+                    iniciarCronometro();
                     }else {
                     System.out.println("no es posible ");
-                }*/
+                }
             }
     }
     
@@ -421,7 +442,7 @@ public class Sequence implements ActionListener{
         return false;
     }
     
-    private boolean sePuedebloquearBoton(String posAntigua) {
+    private boolean sePuedeUtilizarJack(String posAntigua) {
         int x = Character.getNumericValue(posAntigua.charAt(1));
         int y;
         if (x>3) {
@@ -432,8 +453,6 @@ public class Sequence implements ActionListener{
             y=0;
         }
         
-        int x2 = Character.getNumericValue(posicionNueva.charAt(1));
-        int y2 = Character.getNumericValue(posicionNueva.charAt(0));
         char letra=deck[y][x].charAt(0);
         if(letra=='J'){
             System.out.println("SI es posible");
