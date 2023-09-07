@@ -39,6 +39,7 @@ public class Sequence implements ActionListener{
     private String turno="Jugador1";
     private int num=0;
     private int cartasRobadas=0;
+    private String cartaAnterior;
     
     public Sequence() {
         inicializarTablero();
@@ -325,55 +326,90 @@ public class Sequence implements ActionListener{
                     if(turno.equals("Jugador1")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j1"+CU.get(num) , "ficha1.png");
+                        String name="j1"+CU.get(num) ;
+                        ponerFicha(posicionNueva,name, "ficha1.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } else if(turno.equals("Jugador2")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j2" +CU.get(num), "ficha2.png");
+                        String name="j2"+CU.get(num) ;
+                        ponerFicha(posicionNueva,name, "ficha2.png");
                         ponerNuevaCarta(mazo2, posicionAntigua);
                     } else if(turno.equals("Jugador3")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j3"+CU.get(num) , "ficha3.png");
+                        String name="j3"+CU.get(num) ;
+                        ponerFicha(posicionNueva,name , "ficha3.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } else if(turno.equals("Jugador4")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j4" +CU.get(num), "ficha4.png");
+                        String name="j4"+CU.get(num) ;
+                        ponerFicha(posicionNueva,name, "ficha4.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } 
                     cartasRobadas=0;
                     System.out.println("se puso");
                     cambiarTurno();
                     iniciarCronometro();
-                 } else if(posicionAntigua!=null && sePuedeUtilizarJack(posicionAntigua)) {
-                            if(turno.equals("Jugador1")) {
+                 } else if(posicionAntigua!=null && sePuedeUtilizarJackDosOjos(posicionAntigua)) {
+                     if(turno.equals("Jugador1")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j1"+CU.get(num) , "ficha1.png");
+                        String name="j1"+CU.get(num) ;
+                        ponerFicha(posicionNueva,name, "ficha1.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } else if(turno.equals("Jugador2")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j2" +CU.get(num), "ficha2.png");
+                        String name="j2"+CU.get(num) ;
+                        ponerFicha(posicionNueva,name, "ficha2.png");
                         ponerNuevaCarta(mazo2, posicionAntigua);
                     } else if(turno.equals("Jugador3")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j3"+CU.get(num) , "ficha3.png");
+                        String name="j3"+CU.get(num) ;
+                        ponerFicha(posicionNueva,name , "ficha3.png");
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } else if(turno.equals("Jugador4")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
-                        ponerFicha(posicionNueva,"j4" +CU.get(num), "ficha4.png");
+                        String name="j4"+CU.get(num) ;
+                        ponerFicha(posicionNueva,name, "ficha4.png");
+                        ponerNuevaCarta(mazo1, posicionAntigua);
+                    }  
+                    cartasRobadas=0;
+                    System.out.println("se puso");
+                    cambiarTurno();
+                    iniciarCronometro();
+                    }else if (posicionAntigua!=null && sePuedeUtilizarJackUnOjo(posicionAntigua, posicionNueva)) {
+                        if(turno.equals("Jugador1")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        ponerFichaAnterior(posicionNueva,cartaAnterior);
+                        ponerNuevaCarta(mazo1, posicionAntigua);
+                    } else if(turno.equals("Jugador2")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        ponerFichaAnterior(posicionNueva,cartaAnterior);
+                        ponerNuevaCarta(mazo2, posicionAntigua);
+                    } else if(turno.equals("Jugador3")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        ponerFichaAnterior(posicionNueva,cartaAnterior);
+                        ponerNuevaCarta(mazo1, posicionAntigua);
+                    } else if(turno.equals("Jugador4")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        ponerFichaAnterior(posicionNueva,cartaAnterior);
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } 
                     cartasRobadas=0;
                     System.out.println("se puso");
                     cambiarTurno();
                     iniciarCronometro();
-                    }else {
+                    }
+                        else {
                     System.out.println("no es posible ");
                 }
             }
@@ -442,7 +478,7 @@ public class Sequence implements ActionListener{
         return false;
     }
     
-    private boolean sePuedeUtilizarJack(String posAntigua) {
+    private boolean sePuedeUtilizarJackDosOjos(String posAntigua) {
         int x = Character.getNumericValue(posAntigua.charAt(1));
         int y;
         if (x>3) {
@@ -453,8 +489,42 @@ public class Sequence implements ActionListener{
             y=0;
         }
         
-        char letra=deck[y][x].charAt(0);
-        if(letra=='J'){
+        char letra1=deck[y][x].charAt(0);
+        char letra2=deck[y][x].charAt(1);
+        char letra3=deck[y][x].charAt(2);
+        String word = Character.toString(letra1) + Character.toString(letra2) + Character.toString(letra3);
+        if(word.equals("JO2")){
+            System.out.println("SI es posible");
+            
+            deck[y][x].equals("");
+            boton(posAntigua).setIcon(null);
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean sePuedeUtilizarJackUnOjo(String posAntigua, String posicionNueva) {
+        int x = Character.getNumericValue(posAntigua.charAt(1));
+        int y;
+        if (x>3) {
+            y=1;
+            x=x-4;
+        } else {
+            x=x-1;
+            y=0;
+        }
+        
+        char letra1=deck[y][x].charAt(0);
+        char letra2=deck[y][x].charAt(1);
+        char letra3=deck[y][x].charAt(2);
+        
+        int x2 = Character.getNumericValue(posicionNueva.charAt(1));
+        int y2 = Character.getNumericValue(posicionNueva.charAt(0));
+        
+        String word = Character.toString(letra1) + Character.toString(letra2) + Character.toString(letra3);
+        if(word.equals("JO1")){
+            cartaAnterior=deck[y2][x2].substring(2);
+            System.out.println(cartaAnterior);
             System.out.println("SI es posible");
             
             deck[y][x].equals("");
@@ -1046,6 +1116,13 @@ public class Sequence implements ActionListener{
         boton(posicionNueva).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+nombrePNG)));
     }
     
+    private void ponerFichaAnterior(String posicionNueva, String nombre){
+        int x = Character.getNumericValue(posicionNueva.charAt(1));
+        int y = Character.getNumericValue(posicionNueva.charAt(0));
+        tablero[x][y]=nombre;
+        boton(posicionNueva).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+nombre+".png")));
+    }
+    
     private void ponerImagenStringDeck(int x, int y, String posicion, String nombre, String nombrePNG){
         deck[x][y]=nombre;
         boton(posicion).setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/"+nombrePNG)));
@@ -1093,10 +1170,10 @@ public class Sequence implements ActionListener{
         CM.add("AsDiamantes");
         CM.add("AsPicas");
         CM.add("AsTrebol");
-        CM.add("JCorazon");
-        CM.add("JDiamantes");
-        CM.add("JPicas");
-        CM.add("JTrebol");
+        CM.add("JO1Corazon");
+        CM.add("JO2Diamantes");
+        CM.add("JO1Picas");
+        CM.add("JO2Trebol");
         CM.add("KCorazon");
         CM.add("KDiamantes");
         CM.add("KPicas");
