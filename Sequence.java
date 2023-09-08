@@ -210,7 +210,7 @@ public class Sequence implements ActionListener{
         ponerImagenString(2,5,"25","5Diamantes","5Diamantes.png");
         ponerImagenString(2,6,"26","6Diamantes","6Diamantes.png");
         ponerImagenString(2,7,"27","7Diamantes","7Diamantes.png");
-        ponerImagenString(2,8,"28","9Diamantes","9Diamantes.png");
+        ponerImagenString(2,8,"28","9Corazon","9Corazon.png");
         ponerImagenString(2,9,"29","QPicas","QPicas.png");
         ponerImagenString(3,0,"30","8Trebol","8Trebol.png");
         ponerImagenString(3,1,"31","KPicas","KPicas.png");
@@ -382,7 +382,7 @@ public class Sequence implements ActionListener{
                     System.out.println("se puso");
                     cambiarTurno();
                     iniciarCronometro();
-                    }else if (posicionAntigua!=null && sePuedeUtilizarJackUnOjo(posicionAntigua, posicionNueva)) {
+                    }/*else if (posicionAntigua!=null && sePuedeUtilizarJackUnOjo(posicionAntigua, posicionNueva)) {
                         if(turno.equals("Jugador1")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
@@ -407,8 +407,8 @@ public class Sequence implements ActionListener{
                     cartasRobadas=0;
                     System.out.println("se puso");
                     cambiarTurno();
-                    iniciarCronometro();
-                    }
+                 iniciarCronometro();
+                    }*/
                         else {
                     System.out.println("no es posible ");
                 }
@@ -432,6 +432,7 @@ public class Sequence implements ActionListener{
             x=0;
         }
         System.out.println(deck[x][y]);
+        Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+deck[x][y]+".png")));
         return deck[x][y];
     }
     
@@ -1184,4 +1185,5 @@ public class Sequence implements ActionListener{
         CM.add("QTrebol");
         }
     }
+    
 }
