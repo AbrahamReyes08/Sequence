@@ -128,6 +128,8 @@ public class Tablero extends javax.swing.JFrame {
         jButton98 = new javax.swing.JButton();
         jButton99 = new javax.swing.JButton();
         jButton100 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         Mazo2 = new javax.swing.JPanel();
         jButton102 = new javax.swing.JButton();
         jButton103 = new javax.swing.JButton();
@@ -150,205 +152,205 @@ public class Tablero extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new java.awt.GridLayout(10, 10));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton1);
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 68, 52));
 
         jButton2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton2);
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 0, 68, 52));
 
         jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton3);
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 0, 68, 52));
 
         jButton4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton4);
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 0, 68, 52));
 
         jButton5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton5);
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 0, 68, 52));
 
         jButton6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton6);
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 68, 52));
 
         jButton7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton7);
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 0, 68, 52));
 
         jButton8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton8);
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 0, 68, 52));
 
         jButton9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton9);
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 0, 68, 52));
 
         jButton10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton10);
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 0, 68, 52));
 
         jButton11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton11);
+        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 52, 68, 52));
 
         jButton12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton12);
+        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 52, 68, 52));
 
         jButton13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton13);
+        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 52, 68, 52));
 
         jButton14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton14);
+        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 52, 68, 52));
 
         jButton15.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton15);
+        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 52, 68, 52));
 
         jButton16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton16);
+        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 52, 68, 52));
 
         jButton17.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton17);
+        jPanel1.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 52, 68, 52));
 
         jButton18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton18);
+        jPanel1.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 52, 68, 52));
 
         jButton19.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton19);
+        jPanel1.add(jButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 52, 68, 52));
 
         jButton20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton20);
+        jPanel1.add(jButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 52, 68, 52));
 
         jButton21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton21);
+        jPanel1.add(jButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 104, 68, 52));
 
         jButton22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton22);
+        jPanel1.add(jButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 104, 68, 52));
 
         jButton23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton23);
+        jPanel1.add(jButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 104, 68, 52));
 
         jButton24.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton24);
+        jPanel1.add(jButton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 104, 68, 52));
 
         jButton25.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton25);
+        jPanel1.add(jButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 104, 68, 52));
 
         jButton26.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton26);
+        jPanel1.add(jButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 104, 68, 52));
 
         jButton27.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton27);
+        jPanel1.add(jButton27, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 104, 68, 52));
 
         jButton28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton28);
+        jPanel1.add(jButton28, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 104, 68, 52));
 
         jButton29.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton29);
+        jPanel1.add(jButton29, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 104, 68, 52));
 
         jButton30.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton30);
+        jPanel1.add(jButton30, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 104, 68, 52));
 
         jButton31.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton31);
+        jPanel1.add(jButton31, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 156, 68, 52));
 
         jButton32.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton32);
+        jPanel1.add(jButton32, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 156, 68, 52));
 
         jButton33.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton33);
+        jPanel1.add(jButton33, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 156, 68, 52));
 
         jButton34.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton34);
+        jPanel1.add(jButton34, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 156, 68, 52));
 
         jButton35.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton35);
+        jPanel1.add(jButton35, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 156, 68, 52));
 
         jButton36.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton36);
+        jPanel1.add(jButton36, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 156, 68, 52));
 
         jButton37.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton37);
+        jPanel1.add(jButton37, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 156, 68, 52));
 
         jButton38.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton38);
+        jPanel1.add(jButton38, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 156, 68, 52));
 
         jButton39.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton39);
+        jPanel1.add(jButton39, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 156, 68, 52));
 
         jButton40.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton40);
+        jPanel1.add(jButton40, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 156, 68, 52));
 
         jButton41.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton41);
+        jPanel1.add(jButton41, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 208, 68, 52));
 
         jButton42.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton42);
+        jPanel1.add(jButton42, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 208, 68, 52));
 
         jButton43.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton43);
+        jPanel1.add(jButton43, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 208, 68, 52));
 
         jButton44.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton44);
+        jPanel1.add(jButton44, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 208, 68, 52));
 
         jButton45.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton45);
+        jPanel1.add(jButton45, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 208, 68, 52));
 
         jButton46.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton46);
+        jPanel1.add(jButton46, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 208, 68, 52));
 
         jButton47.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton47);
+        jPanel1.add(jButton47, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 208, 68, 52));
 
         jButton48.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton48);
+        jPanel1.add(jButton48, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 208, 68, 52));
 
         jButton49.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton49);
+        jPanel1.add(jButton49, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 208, 68, 52));
 
         jButton50.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton50);
+        jPanel1.add(jButton50, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 208, 68, 52));
 
         jButton51.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton51);
+        jPanel1.add(jButton51, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 68, 52));
 
         jButton52.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton52);
+        jPanel1.add(jButton52, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 260, 68, 52));
 
         jButton53.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton53);
+        jPanel1.add(jButton53, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 260, 68, 52));
 
         jButton54.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton54);
+        jPanel1.add(jButton54, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 260, 68, 52));
 
         jButton55.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton55);
+        jPanel1.add(jButton55, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 260, 68, 52));
 
         jButton56.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton56);
+        jPanel1.add(jButton56, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 68, 52));
 
         jButton57.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton57);
+        jPanel1.add(jButton57, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 260, 68, 52));
 
         jButton58.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton58);
+        jPanel1.add(jButton58, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 260, 68, 52));
 
         jButton59.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton59);
+        jPanel1.add(jButton59, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 260, 68, 52));
 
         jButton60.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton60);
+        jPanel1.add(jButton60, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 260, 68, 52));
 
         jButton61.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton61);
+        jPanel1.add(jButton61, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 312, 68, 52));
 
         jButton62.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton62);
+        jPanel1.add(jButton62, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 312, 68, 52));
 
         jButton63.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton63);
+        jPanel1.add(jButton63, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 312, 68, 52));
 
         jButton64.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton64);
+        jPanel1.add(jButton64, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 312, 68, 52));
 
         jButton65.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton65);
+        jPanel1.add(jButton65, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 312, 68, 52));
 
         jButton66.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton66);
+        jPanel1.add(jButton66, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 312, 68, 52));
 
         jButton67.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton67.addActionListener(new java.awt.event.ActionListener() {
@@ -356,103 +358,103 @@ public class Tablero extends javax.swing.JFrame {
                 jButton67ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton67);
+        jPanel1.add(jButton67, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 312, 68, 52));
 
         jButton68.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton68);
+        jPanel1.add(jButton68, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 312, 68, 52));
 
         jButton69.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton69);
+        jPanel1.add(jButton69, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 312, 68, 52));
 
         jButton70.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton70);
+        jPanel1.add(jButton70, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 312, 68, 52));
 
         jButton71.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton71);
+        jPanel1.add(jButton71, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 364, 68, 52));
 
         jButton72.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton72);
+        jPanel1.add(jButton72, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 364, 68, 52));
 
         jButton73.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton73);
+        jPanel1.add(jButton73, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 364, 68, 52));
 
         jButton74.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton74);
+        jPanel1.add(jButton74, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 364, 68, 52));
 
         jButton75.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton75);
+        jPanel1.add(jButton75, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 364, 68, 52));
 
         jButton76.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton76);
+        jPanel1.add(jButton76, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 364, 68, 52));
 
         jButton77.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton77);
+        jPanel1.add(jButton77, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 364, 68, 52));
 
         jButton78.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton78);
+        jPanel1.add(jButton78, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 364, 68, 52));
 
         jButton79.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton79);
+        jPanel1.add(jButton79, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 364, 68, 52));
 
         jButton80.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton80);
+        jPanel1.add(jButton80, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 364, 68, 52));
 
         jButton81.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton81);
+        jPanel1.add(jButton81, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 416, 68, 52));
 
         jButton82.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton82);
+        jPanel1.add(jButton82, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 416, 68, 52));
 
         jButton83.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton83);
+        jPanel1.add(jButton83, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 416, 68, 52));
 
         jButton84.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton84);
+        jPanel1.add(jButton84, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 416, 68, 52));
 
         jButton85.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton85);
+        jPanel1.add(jButton85, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 416, 68, 52));
 
         jButton86.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton86);
+        jPanel1.add(jButton86, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 416, 68, 52));
 
         jButton87.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton87);
+        jPanel1.add(jButton87, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 416, 68, 52));
 
         jButton88.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton88);
+        jPanel1.add(jButton88, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 416, 68, 52));
 
         jButton89.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton89);
+        jPanel1.add(jButton89, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 416, 68, 52));
 
         jButton90.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton90);
+        jPanel1.add(jButton90, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 416, 68, 52));
 
         jButton91.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton91);
+        jPanel1.add(jButton91, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 468, 68, 52));
 
         jButton92.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton92);
+        jPanel1.add(jButton92, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 468, 68, 52));
 
         jButton93.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton93);
+        jPanel1.add(jButton93, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 468, 68, 52));
 
         jButton94.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton94);
+        jPanel1.add(jButton94, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 468, 68, 52));
 
         jButton95.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton95);
+        jPanel1.add(jButton95, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 468, 68, 52));
 
         jButton96.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton96);
+        jPanel1.add(jButton96, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 468, 68, 52));
 
         jButton97.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton97);
+        jPanel1.add(jButton97, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 468, 68, 52));
 
         jButton98.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton98);
+        jPanel1.add(jButton98, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 468, 68, 52));
 
         jButton99.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jButton99);
+        jPanel1.add(jButton99, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 468, 68, 52));
 
         jButton100.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton100.addActionListener(new java.awt.event.ActionListener() {
@@ -460,7 +462,13 @@ public class Tablero extends javax.swing.JFrame {
                 jButton100ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton100);
+        jPanel1.add(jButton100, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 468, 68, 52));
+
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 50));
+
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 680, 520));
 
@@ -493,7 +501,7 @@ public class Tablero extends javax.swing.JFrame {
                 MazoActionPerformed(evt);
             }
         });
-        getContentPane().add(Mazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 480, 75, 55));
+        getContentPane().add(Mazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 470, 75, 55));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 650, 90, 10));
 
         NombreMazoTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -509,7 +517,7 @@ public class Tablero extends javax.swing.JFrame {
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Mazo Comun");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 440, 75, 55));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 430, 75, 55));
 
         CardUsed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CardUsed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png"))); // NOI18N
@@ -517,9 +525,9 @@ public class Tablero extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Anteriormente");
+        jLabel5.setText("En Turno Anterior");
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 150, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 180, -1));
 
         instrucDiscart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         instrucDiscart.setText("<html> Elige la carta de tu mazo que deseas descartar <html>");
@@ -706,6 +714,8 @@ public class Tablero extends javax.swing.JFrame {
     public static javax.swing.JButton jButton99;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
