@@ -137,8 +137,9 @@ public class Tablero extends javax.swing.JFrame {
         jButton105 = new javax.swing.JButton();
         jButton106 = new javax.swing.JButton();
         jButton107 = new javax.swing.JButton();
+        jButton108 = new javax.swing.JButton();
+        jButton109 = new javax.swing.JButton();
         Mazo = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         NombreMazoTurno = new javax.swing.JLabel();
         tiempoLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -148,6 +149,7 @@ public class Tablero extends javax.swing.JFrame {
         cartaSelec = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -472,27 +474,51 @@ public class Tablero extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 680, 520));
 
+        Mazo2.setBackground(new java.awt.Color(51, 51, 51));
+        Mazo2.setBorder(new javax.swing.border.MatteBorder(null));
+        Mazo2.setForeground(new java.awt.Color(0, 0, 0));
         Mazo2.setLayout(new java.awt.GridLayout(2, 3));
 
+        jButton102.setBackground(new java.awt.Color(102, 102, 102));
+        jButton102.setForeground(new java.awt.Color(0, 0, 0));
         jButton102.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Mazo2.add(jButton102);
 
+        jButton103.setBackground(new java.awt.Color(102, 102, 102));
+        jButton103.setForeground(new java.awt.Color(0, 0, 0));
         jButton103.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Mazo2.add(jButton103);
 
+        jButton104.setBackground(new java.awt.Color(102, 102, 102));
+        jButton104.setForeground(new java.awt.Color(0, 0, 0));
         jButton104.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Mazo2.add(jButton104);
 
+        jButton105.setBackground(new java.awt.Color(102, 102, 102));
+        jButton105.setForeground(new java.awt.Color(0, 0, 0));
         jButton105.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Mazo2.add(jButton105);
 
+        jButton106.setBackground(new java.awt.Color(102, 102, 102));
+        jButton106.setForeground(new java.awt.Color(0, 0, 0));
         jButton106.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Mazo2.add(jButton106);
 
+        jButton107.setBackground(new java.awt.Color(102, 102, 102));
+        jButton107.setForeground(new java.awt.Color(0, 0, 0));
         jButton107.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Mazo2.add(jButton107);
 
-        getContentPane().add(Mazo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, 190, 100));
+        jButton108.setBackground(new java.awt.Color(102, 102, 102));
+        jButton108.setForeground(new java.awt.Color(0, 0, 0));
+        jButton108.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Mazo2.add(jButton108);
+
+        jButton109.setBackground(new java.awt.Color(102, 102, 102));
+        jButton109.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Mazo2.add(jButton109);
+
+        getContentPane().add(Mazo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 260, 260, 110));
 
         Mazo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png"))); // NOI18N
         Mazo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -501,23 +527,22 @@ public class Tablero extends javax.swing.JFrame {
                 MazoActionPerformed(evt);
             }
         });
-        getContentPane().add(Mazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 470, 75, 55));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 650, 90, 10));
+        getContentPane().add(Mazo, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 450, 75, 55));
 
         NombreMazoTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NombreMazoTurno.setText("Mazo Jugador 1");
-        getContentPane().add(NombreMazoTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 260, 190, -1));
+        getContentPane().add(NombreMazoTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 240, 190, -1));
 
         tiempoLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         tiempoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tiempoLabel.setText("00:00");
         tiempoLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "TIEMPO RESTANTE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         tiempoLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        getContentPane().add(tiempoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 560, 130, 60));
+        getContentPane().add(tiempoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 560, 130, 60));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Mazo Comun");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 430, 75, 55));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 410, 75, 55));
 
         CardUsed.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CardUsed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png"))); // NOI18N
@@ -531,23 +556,24 @@ public class Tablero extends javax.swing.JFrame {
 
         instrucDiscart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         instrucDiscart.setText("<html> Elige la carta de tu mazo que deseas descartar <html>");
-        getContentPane().add(instrucDiscart, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 390, 160, 30));
+        getContentPane().add(instrucDiscart, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 370, 280, 30));
 
         cartaSelec.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png"))); // NOI18N
-        getContentPane().add(cartaSelec, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, 170, 50));
+        getContentPane().add(cartaSelec, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 160, 170, 50));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Carta Seleccionada");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 190, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 190, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Carta Utilizada");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 150, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 630, 40, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -615,6 +641,8 @@ public class Tablero extends javax.swing.JFrame {
     public static javax.swing.JButton jButton105;
     public static javax.swing.JButton jButton106;
     public static javax.swing.JButton jButton107;
+    public static javax.swing.JButton jButton108;
+    public static javax.swing.JButton jButton109;
     public static javax.swing.JButton jButton11;
     public static javax.swing.JButton jButton12;
     public static javax.swing.JButton jButton13;
@@ -712,13 +740,13 @@ public class Tablero extends javax.swing.JFrame {
     public static javax.swing.JButton jButton97;
     public static javax.swing.JButton jButton98;
     public static javax.swing.JButton jButton99;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JLabel tiempoLabel;
     // End of variables declaration//GEN-END:variables

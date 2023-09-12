@@ -27,7 +27,7 @@ import javax.swing.JOptionPane;
  */
 public class Sequence implements ActionListener{
     private String[][] tablero=new String [10][10];
-    private String[][] deck=new String [2][3];
+    private String[][] deck=new String [2][4];
     
     ArrayList<String> CM = new ArrayList<>();
     ArrayList<String> CU = new ArrayList<>();    
@@ -35,7 +35,11 @@ public class Sequence implements ActionListener{
     ArrayList<String> mazo2 = new ArrayList<>();
     ArrayList<String> mazo3 = new ArrayList<>();
     ArrayList<String> mazo4 = new ArrayList<>();
-
+    ArrayList<String> mazo5 = new ArrayList<>();
+    ArrayList<String> mazo6 = new ArrayList<>();
+    ArrayList<String> mazo7 = new ArrayList<>();
+    ArrayList<String> mazo8 = new ArrayList<>();
+    
     Random random = new Random();
     Tablero tab= new Tablero();
     
@@ -50,6 +54,7 @@ public class Sequence implements ActionListener{
     private String cartaAnterior="";
     private Timer timer;
     private boolean timertask=false;
+    private int cantidadDeJugadores=8;
     
     public Sequence() {
         inicializarTablero();
@@ -66,15 +71,40 @@ public class Sequence implements ActionListener{
             }
         }
         for (int w=0; w<2; w++){
-            for (int z=0; z<3;z++) {
+            for (int z=0; z<4;z++) {
                 deck [w][z]="";
             }
         }
         fichasMazo();
+        if (cantidadDeJugadores==2) {
+        asignarCartas(mazo1);
+        asignarCartas(mazo2);
+        } else if (cantidadDeJugadores==3) {
+        asignarCartas(mazo1);
+        asignarCartas(mazo2);
+        asignarCartas(mazo3);
+        } else if (cantidadDeJugadores==4) {
         asignarCartas(mazo1);
         asignarCartas(mazo2);
         asignarCartas(mazo3);
         asignarCartas(mazo4);
+        } else if (cantidadDeJugadores==6) {
+        asignarCartas(mazo1);
+        asignarCartas(mazo2);
+        asignarCartas(mazo3);
+        asignarCartas(mazo4);
+        asignarCartas(mazo5);
+        asignarCartas(mazo6);
+        } else if (cantidadDeJugadores==8) {
+        asignarCartas(mazo1);
+        asignarCartas(mazo2);
+        asignarCartas(mazo3);
+        asignarCartas(mazo4);
+        asignarCartas(mazo5);
+        asignarCartas(mazo6);
+        asignarCartas(mazo7);
+        asignarCartas(mazo8);
+        } 
         CambiarMazoEnPantalla(mazo1);
         iniciarCronometro();
         CU.add("parteTrasera");
@@ -182,12 +212,22 @@ public class Sequence implements ActionListener{
         Tablero.jButton98.addActionListener(this); 
         Tablero.jButton99.addActionListener(this); 
         Tablero.jButton100.addActionListener(this);
-        Tablero.jButton102.addActionListener(this); 
-        Tablero.jButton103.addActionListener(this); 
-        Tablero.jButton104.addActionListener(this); 
-        Tablero.jButton105.addActionListener(this); 
-        Tablero.jButton106.addActionListener(this); 
-        Tablero.jButton107.addActionListener(this); 
+
+        if(cantidadDeJugadores==2 || cantidadDeJugadores==3 || cantidadDeJugadores==4 ||cantidadDeJugadores==6 || cantidadDeJugadores==8) {
+           Tablero.jButton102.addActionListener(this); 
+            Tablero.jButton103.addActionListener(this); 
+            Tablero.jButton104.addActionListener(this); 
+            Tablero.jButton105.addActionListener(this); 
+            if(cantidadDeJugadores==2 || cantidadDeJugadores==3 || cantidadDeJugadores==4 ||cantidadDeJugadores==6) {
+                Tablero.jButton106.addActionListener(this); 
+                if(cantidadDeJugadores==2 || cantidadDeJugadores==3 || cantidadDeJugadores==4) {
+                    Tablero.jButton107.addActionListener(this); 
+                    if(cantidadDeJugadores==2 || cantidadDeJugadores==4) {
+                        Tablero.jButton108.addActionListener(this);
+                    }
+                }
+            }
+        }
         Tablero.Mazo.addActionListener(this);
     }
     
@@ -316,7 +356,16 @@ public class Sequence implements ActionListener{
                                 agarrarNuevaCartaDeMazo(mazo3, posicionAntigua);
                             } else if(turno.equals("Jugador4")) {
                                 agarrarNuevaCartaDeMazo(mazo4, posicionAntigua);
+                            } else if(turno.equals("Jugador5")) {
+                                agarrarNuevaCartaDeMazo(mazo5, posicionAntigua);
+                            } else if(turno.equals("Jugador6")) {
+                                agarrarNuevaCartaDeMazo(mazo6, posicionAntigua);
+                            } else if(turno.equals("Jugador7")) {
+                                agarrarNuevaCartaDeMazo(mazo7, posicionAntigua);
+                            } else if(turno.equals("Jugador8")) {
+                                agarrarNuevaCartaDeMazo(mazo8, posicionAntigua);
                             }
+                            
                             cartasRobadas=1;
                             posicionAntigua=null;
                             quiereDescartar=false;
@@ -333,6 +382,7 @@ public class Sequence implements ActionListener{
                 dimeLaCasilla(posicionNueva);
                 System.out.println("ES de tab");
                 if (posicionAntigua!=null && ponerFichaDisponible(posicionAntigua,posicionNueva)){
+                    
                     if(turno.equals("Jugador1")) {
                         num=num+1;
                         guardarFichaUtilizada(posicionNueva, num);
@@ -373,6 +423,46 @@ public class Sequence implements ActionListener{
                             System.out.println("No  posible");
                         }
                         ponerNuevaCarta(mazo4, posicionAntigua);
+                    } else if(turno.equals("Jugador5")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        String name="j5-"+CU.get(num) ;
+                        try {
+                            ponerFichaCombinada(posicionNueva,name, "amarillo");
+                        } catch (IOException ex) {
+                            System.out.println("No  posible");
+                        }
+                        ponerNuevaCarta(mazo5, posicionAntigua);
+                    } else if(turno.equals("Jugador6")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        String name="j6-"+CU.get(num) ;
+                        try {
+                            ponerFichaCombinada(posicionNueva,name, "naranja");
+                        } catch (IOException ex) {
+                            System.out.println("No  posible");
+                        }          
+                        ponerNuevaCarta(mazo6, posicionAntigua);
+                    } else if(turno.equals("Jugador7")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        String name="j7-"+CU.get(num) ;
+                        try {
+                            ponerFichaCombinada(posicionNueva,name, "azul");
+                        } catch (IOException ex) {
+                            System.out.println("No  posible");
+                        }
+                        ponerNuevaCarta(mazo7, posicionAntigua);
+                    } else if(turno.equals("Jugador8")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        String name="j8-"+CU.get(num) ;
+                        try {
+                            ponerFichaCombinada(posicionNueva,name, "morado");
+                        } catch (IOException ex) {
+                            System.out.println("No  posible");
+                        }
+                        ponerNuevaCarta(mazo8, posicionAntigua);
                     } 
                     cartasRobadas=0;
                     System.out.println("se puso");
@@ -419,6 +509,46 @@ public class Sequence implements ActionListener{
                             System.out.println("No  posible");
                         }
                         ponerNuevaCarta(mazo4, posicionAntigua);
+                    } else if(turno.equals("Jugador5")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        String name="j5-"+CU.get(num) ;
+                        try {
+                            ponerFichaCombinada(posicionNueva,name, "amarillo");
+                        } catch (IOException ex) {
+                            System.out.println("No  posible");
+                        }
+                        ponerNuevaCarta(mazo5, posicionAntigua);
+                    } else if(turno.equals("Jugador6")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        String name="j6-"+CU.get(num) ;
+                        try {
+                            ponerFichaCombinada(posicionNueva,name, "naranja");
+                        } catch (IOException ex) {
+                            System.out.println("No  posible");
+                        }          
+                        ponerNuevaCarta(mazo6, posicionAntigua);
+                    } else if(turno.equals("Jugador7")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        String name="j7-"+CU.get(num) ;
+                        try {
+                            ponerFichaCombinada(posicionNueva,name, "azul");
+                        } catch (IOException ex) {
+                            System.out.println("No  posible");
+                        }
+                        ponerNuevaCarta(mazo7, posicionAntigua);
+                    } else if(turno.equals("Jugador8")) {
+                        num=num+1;
+                        guardarFichaUtilizada(posicionNueva, num);
+                        String name="j8-"+CU.get(num) ;
+                        try {
+                            ponerFichaCombinada(posicionNueva,name, "morado");
+                        } catch (IOException ex) {
+                            System.out.println("No  posible");
+                        }
+                        ponerNuevaCarta(mazo8, posicionAntigua);
                     }  
                     cartasRobadas=0;
                     System.out.println("se puso");
@@ -433,22 +563,46 @@ public class Sequence implements ActionListener{
                         ponerNuevaCarta(mazo1, posicionAntigua);
                     } else if(turno.equals("Jugador2")) {
                         num=num+1;
-                       guardarFicha(posicionNueva, num);
+                       guardarFicha(posicionAntigua, num);
                         String nombrePng=cartaAnterior+".png";
                         ponerFicha(posicionNueva,cartaAnterior, nombrePng);
                        ponerNuevaCarta(mazo2, posicionAntigua);
                     } else if(turno.equals("Jugador3")) {
                         num=num+1;
-                        guardarFicha(posicionNueva, num);
+                        guardarFicha(posicionAntigua, num);
                         String nombrePng=cartaAnterior+".png";
                         ponerFicha(posicionNueva,cartaAnterior, nombrePng);
                         ponerNuevaCarta(mazo3, posicionAntigua);
                     } else if(turno.equals("Jugador4")) {
                         num=num+1;
-                        guardarFicha(posicionNueva, num);
+                        guardarFicha(posicionAntigua, num);
                         String nombrePng=cartaAnterior+".png";
                         ponerFicha(posicionNueva,cartaAnterior, nombrePng);
                         ponerNuevaCarta(mazo4, posicionAntigua);
+                    } else if(turno.equals("Jugador5")) {
+                        num=num+1;
+                        guardarFicha(posicionAntigua, num);
+                        String nombrePng=cartaAnterior+".png";
+                        ponerFicha(posicionNueva,cartaAnterior, nombrePng);
+                        ponerNuevaCarta(mazo5, posicionAntigua);
+                    } else if(turno.equals("Jugador6")) {
+                        num=num+1;
+                       guardarFicha(posicionAntigua, num);
+                        String nombrePng=cartaAnterior+".png";
+                        ponerFicha(posicionNueva,cartaAnterior, nombrePng);
+                       ponerNuevaCarta(mazo6, posicionAntigua);
+                    } else if(turno.equals("Jugador7")) {
+                        num=num+1;
+                        guardarFicha(posicionAntigua, num);
+                        String nombrePng=cartaAnterior+".png";
+                        ponerFicha(posicionNueva,cartaAnterior, nombrePng);
+                        ponerNuevaCarta(mazo7, posicionAntigua);
+                    } else if(turno.equals("Jugador8")) {
+                        num=num+1;
+                        guardarFicha(posicionAntigua, num);
+                        String nombrePng=cartaAnterior+".png";
+                        ponerFicha(posicionNueva,cartaAnterior, nombrePng);
+                        ponerNuevaCarta(mazo8, posicionAntigua);
                     } 
                     cartasRobadas=0;
                     System.out.println("se puso");
@@ -478,18 +632,18 @@ public class Sequence implements ActionListener{
     }
     
     private String dimeLaCasillaD(String posicion) {
-        int y = Character.getNumericValue(posicionAntigua.charAt(1));
-        int x;
-        if (y>3) {
-            x=1;
-            y=y-4;
+        int x = Character.getNumericValue(posicionAntigua.charAt(1));
+         int y;
+        if (x>4) {
+            y=1;
+            x=x-5;
         } else {
-            y=y-1;
-            x=0;
+            x=x-1;
+            y=0;
         }
-        System.out.println(deck[x][y]);
-        Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+deck[x][y]+".png")));
-        return deck[x][y];
+        System.out.println(deck[y][x]);
+        Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+deck[y][x]+".png")));
+        return deck[y][x];
     }
     
     private boolean isCurrentPieceDeck(String posicion) {
@@ -513,10 +667,10 @@ public class Sequence implements ActionListener{
     
     private boolean ponerFichaDisponible(String PosAntigua, String posNueva) {
         int x = Character.getNumericValue(posicionAntigua.charAt(1));
-        int y;
-        if (x>3) {
+         int y;
+        if (x>4) {
             y=1;
-            x=x-4;
+            x=x-5;
         } else {
             x=x-1;
             y=0;
@@ -542,9 +696,9 @@ public class Sequence implements ActionListener{
     private boolean sePuedeUtilizarJackDosOjos(String posAntigua) {
         int x = Character.getNumericValue(posAntigua.charAt(1));
         int y;
-        if (x>3) {
+        if (x>4) {
             y=1;
-            x=x-4;
+            x=x-5;
         } else {
             x=x-1;
             y=0;
@@ -573,9 +727,9 @@ public class Sequence implements ActionListener{
         
         int x2 = Character.getNumericValue(posAntigua.charAt(1));
         int y2;
-        if (x2>3) {
+        if (x2>4) {
             y2=1;
-            x2=x2-4;
+            x2=x2-5;
         } else {
             x2=x2-1;
             y2=0;
@@ -613,9 +767,9 @@ public class Sequence implements ActionListener{
     private void guardarFicha(String posAntigua, int num) {
         int x2 = Character.getNumericValue(posAntigua.charAt(1));
         int y2;
-        if (x2>3) {
+        if (x2>4) {
             y2=1;
-            x2=x2-4;
+            x2=x2-5;
         } else {
             x2=x2-1;
             y2=0;
@@ -626,10 +780,10 @@ public class Sequence implements ActionListener{
     
     private void ponerNuevaCarta(ArrayList nombreMazo,String posAntigua) {
         int x = Character.getNumericValue(posicionAntigua.charAt(1));
-        int y;
-        if (x>3) {
+         int y;
+        if (x>4) {
             y=1;
-            x=x-4;
+            x=x-5;
         } else {
             x=x-1;
             y=0;
@@ -645,9 +799,9 @@ public class Sequence implements ActionListener{
     private void agarrarNuevaCartaDeMazo(ArrayList nombreMazo, String posAntigua) {
         int x = Character.getNumericValue(posicionAntigua.charAt(1));
         int y;
-        if (x>3) {
+        if (x>4) {
             y=1;
-            x=x-4;
+            x=x-5;
         } else {
             x=x-1;
             y=0;
@@ -678,59 +832,140 @@ public class Sequence implements ActionListener{
                     posicionActual = null;  
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
         } else if (turno.equals("Jugador2")) {
-            turno="Jugador3";
-            CambiarMazoEnPantalla(mazo3);
+            if(cantidadDeJugadores==2) {
+                turno="Jugador1";
+                CambiarMazoEnPantalla(mazo1);
+            } else if (cantidadDeJugadores>2) {
+                turno="Jugador3";
+               CambiarMazoEnPantalla(mazo3);
+            }
             Tablero.NombreMazoTurno.setText(turno);
                     posicionNueva = null;
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
         } else if (turno.equals("Jugador3")){
-            turno="Jugador4";
-            CambiarMazoEnPantalla(mazo4);
+            if(cantidadDeJugadores==3) {
+                turno="Jugador1";
+                CambiarMazoEnPantalla(mazo1);
+            } else if (cantidadDeJugadores>3) {
+                turno="Jugador4";
+               CambiarMazoEnPantalla(mazo4);
+            }
             Tablero.NombreMazoTurno.setText(turno);
                     posicionNueva = null;
                     posicionAntigua = null;
                     posicionActual=null;    
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
         } else if (turno.equals("Jugador4")) {
-            turno="Jugador1";
-            CambiarMazoEnPantalla(mazo1);
+            if(cantidadDeJugadores==4) {
+                turno="Jugador1";
+                CambiarMazoEnPantalla(mazo1);
+            } else if (cantidadDeJugadores>4) {
+                turno="Jugador5";
+               CambiarMazoEnPantalla(mazo5);
+            }
+            Tablero.NombreMazoTurno.setText(turno);
+                    posicionNueva = null;
+                    posicionAntigua = null;
+                    posicionActual=null;
+                    Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
+        } else if (turno.equals("Jugador5")) {
+            if(cantidadDeJugadores>=6) {
+                turno="Jugador6";
+                CambiarMazoEnPantalla(mazo6);
+            } 
+            Tablero.NombreMazoTurno.setText(turno);
+                    posicionNueva = null;
+                    posicionAntigua = null;
+                    posicionActual=null;
+                    Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
+        }else if (turno.equals("Jugador6")) {
+            if(cantidadDeJugadores==6) {
+                turno="Jugador1";
+                CambiarMazoEnPantalla(mazo1);
+            } else if (cantidadDeJugadores>6) {
+                turno="Jugador7";
+               CambiarMazoEnPantalla(mazo7);
+            }
+            Tablero.NombreMazoTurno.setText(turno);
+                    posicionNueva = null;
+                    posicionAntigua = null;
+                    posicionActual=null;
+                    Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
+        }else if (turno.equals("Jugador7")) {
+            if(cantidadDeJugadores==8) {
+                turno="Jugador8";
+                CambiarMazoEnPantalla(mazo8);
+            } 
+            Tablero.NombreMazoTurno.setText(turno);
+                    posicionNueva = null;
+                    posicionAntigua = null;
+                    posicionActual=null;
+                    Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
+        } else if (turno.equals("Jugador8")) {
+            if(cantidadDeJugadores==8) {
+                turno="Jugador1";
+                CambiarMazoEnPantalla(mazo1);
+            } 
             Tablero.NombreMazoTurno.setText(turno);
                     posicionNueva = null;
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
         }
+        
             
     }
     
     private void asignarCartas(ArrayList nombre) {
         int w = 0;
         int z = 0;
-        for (int i = 0; i != 6; i++) {
-                    int index = random.nextInt(CM.size());
-                    nombre.add(CM.get(index));
-                    CM.remove(index);
-                    
-                    z++; 
-                    if (z >= 3) {
-                        z = 0;
-                        w++;
-                    }
+        int num=0;
+        if (cantidadDeJugadores==2 || cantidadDeJugadores==4) {
+            num=7;
+        } else if (cantidadDeJugadores==3) {
+            num=6;
+        } else if (cantidadDeJugadores==6) {
+            num=5;
+        } else if (cantidadDeJugadores==8) {
+            num=4;
+        } 
+        for (int i = 0; i != num; i++) {
+            int index = random.nextInt(CM.size());
+            nombre.add(CM.get(index));
+            CM.remove(index);
+            z++;
+            if (z >= 4) {
+                z = 0;
+                w++;
             }
-    }
+        }
+        }
 
-    private void CambiarMazoEnPantalla(ArrayList nombre) {
-        int n=0;
-        for (int i = 0; i <2; i++) {
-                for (int j = 0; j <3; j++) {
+    private void CambiarMazoEnPantalla(ArrayList<String> nombre) {
+        int n = 0;
+        int num=0;
+        if (cantidadDeJugadores==2 || cantidadDeJugadores==4) {
+            num=7;
+        } else if (cantidadDeJugadores==3) {
+            num=6;
+        } else if (cantidadDeJugadores==6) {
+            num=5;
+        } else if (cantidadDeJugadores==8) {
+            num=4;
+        } 
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 4; j++) {
+                    if (n==num) {
+                        return;
+                    }
                     ponerImagenStringDeck(i,j,"C"+(n+1),nombre.get(n).toString(),nombre.get(n).toString()+".png");
                     
                     n=n+1;
-                }  
             }
-    }
+        }
+        }
     
     private void iniciarCronometro() {
         if(timer==null){
@@ -970,9 +1205,13 @@ public class Sequence implements ActionListener{
         return "C5";
     } else if (boton == Tablero.jButton107) {
         return "C6";
+    } else if(boton == Tablero.jButton108) {
+        return "C7";
+    } else if(boton == Tablero.jButton109) {
+        return "C8";
     } else if (boton == Tablero.Mazo) {
         return "discart";
-    }
+    } 
     return null;
 }
     
@@ -1189,9 +1428,13 @@ public class Sequence implements ActionListener{
             return Tablero.jButton106;
         } else if (posicion.equals("C6")) {
             return Tablero.jButton107;
+        } else if (posicion.equals("C7")) {
+            return Tablero.jButton108;
+        } else if (posicion.equals("C8")) {
+            return Tablero.jButton109;
         } else if (posicion.equals("discart")) {
             return Tablero.Mazo;
-        }
+        } 
         return null;
     }
     
