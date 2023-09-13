@@ -395,8 +395,13 @@ public class Sequence implements ActionListener{
                 } 
                 
                 if(quiereDescartar) {
-                    if (isCurrentPieceDeck(posicionActual)) {
+                    if (isCurrentPieceDeck(posicionActual) ) {
                         posicionAntigua=posicionActual;
+                        if (todaviaSePuedePoner(posicionAntigua)) {
+                           posicionAntigua=null;
+                            quiereDescartar=false;
+                            Tablero.instrucDiscart.setVisible(false); 
+                        } else {
                             if(turno.equals(Jugador1)) {
                                 agarrarNuevaCartaDeMazo(mazo1, posicionAntigua);
                             } else if(turno.equals(Jugador2)) {
@@ -419,6 +424,7 @@ public class Sequence implements ActionListener{
                             posicionAntigua=null;
                             quiereDescartar=false;
                             Tablero.instrucDiscart.setVisible(false);
+                        }
                     }
                 }
             
@@ -1726,13 +1732,26 @@ public class Sequence implements ActionListener{
         }
     }        
     
-    public void colorearDeck(Color color) {
-        for (int i=0; i<deck.length; i++) {
-            for (int k=0; k<deck.length;k++) {
-                    String pos=""+i+k+"";
-               boton(pos).setBackground(color);
+    private boolean todaviaSePuedePoner(String posicionAntigua) {
+        int x = Character.getNumericValue(posicionAntigua.charAt(1));
+        int y;
+        if (x>4) {
+            y=1;
+            x=x-5;
+        } else {
+            x=x-1;
+            y=0;
+        }
+        String selec=deck[y][x];
+        for (int i=0; i<tablero.length; i++) {
+            for (int z=0; z<tablero.length;z++) {
+                if (tablero[i][z].equals(selec)) {
+                    JOptionPane.showMessageDialog(null, "Todavía puedes utilizar esta carta.\nIntenta con otra que ya no tenga opciones para utilizarse.");
+                    return true;
+                }
             }
         }
+        return false;
     }
     
     private void haySecuencia(String ficha) {
