@@ -1760,15 +1760,16 @@ public class Sequence implements ActionListener{
           for (int s=0; s<tablero.length; s++) {
               if(i<6) {
                 if (tablero[i][s].substring(0, 3).equals(ficha)) {
-                    cont1=1;
+                    System.out.println(ficha+"1 vertical");
                     if(tablero[i+1][s].substring(0, 3).equals(ficha)) {
-                        cont1=2;
+                        System.out.println(ficha+"2 vertical");
                           if(tablero[i+2][s].substring(0, 3).equals(ficha)) {
-                              cont1=3;
+                              System.out.println(ficha+"3 vertical");
                                   if(tablero[i+3][s].substring(0, 3).equals(ficha)) {
-                                      cont1=4;
+                                      System.out.println(ficha+"4 vertical");
                                           if(tablero[i+4][s].substring(0, 3).equals(ficha)) {
-                                              cont1=5;
+                                              cont1=cont1+1;
+                                              System.out.println(ficha+"5 vertical");
                                                   break;
                                           } 
                                   } 
@@ -1784,15 +1785,16 @@ public class Sequence implements ActionListener{
           for (int s=0; s<tablero.length; s++) {
               if(s<6) {
                 if (tablero[i][s].substring(0, 3).equals(ficha)) {
-                    cont2=1;
+                    System.out.println(ficha+"1 horizontal");
                     if(tablero[i][s+1].substring(0, 3).equals(ficha)) {
-                        cont2=2;
+                        System.out.println(ficha+"2 horizontal");
                           if(tablero[i][s+2].substring(0, 3).equals(ficha)) {
-                              cont2=3;
+                              System.out.println(ficha+"3 horizontal");
                                   if(tablero[i][s+3].substring(0, 3).equals(ficha)) {
-                                      cont2=4;
+                                      System.out.println(ficha+"4 horizontal");
                                           if(tablero[i][s+4].substring(0, 3).equals(ficha)) {
-                                              cont2=5;
+                                              cont2=cont2+1;
+                                              System.out.println(ficha+"5 horizontal");
                                               break;
                                           } 
                                   } 
@@ -1808,16 +1810,13 @@ public class Sequence implements ActionListener{
           for (int s=0; s<tablero.length; s++) {
               if(i<6 && s>3) {
                 if (tablero[i][s].substring(0, 3).equals(ficha)) {
-                    cont3=1;
+                    System.out.println(ficha+"===============1 DIAG");
                     if(tablero[i+1][s-1].substring(0, 3).equals(ficha)) {
-                        cont3=2;
+                        System.out.println(ficha+"===============2 Diag");
                           if(tablero[i+2][s-2].substring(0, 3).equals(ficha)) {
-                              cont3=3;
                                   if(tablero[i+3][s-3].substring(0, 3).equals(ficha)) {
-                                      cont3=4;
                                           if(tablero[i+4][s-4].substring(0, 3).equals(ficha)) {
-                                              cont3=5;
-                                              break;
+                                              cont3=cont3+1;
                                           } 
                                   } 
                           }   
@@ -1832,16 +1831,11 @@ public class Sequence implements ActionListener{
           for (int s=0; s<tablero.length; s++) {
               if(i<6 && s<6) {
                 if (tablero[i][s].substring(0, 3).equals(ficha)) {
-                    cont4=1;
                     if(tablero[i+1][s+1].substring(0, 3).equals(ficha)) {
-                        cont4=2;
                           if(tablero[i+2][s+2].substring(0, 3).equals(ficha)) {
-                              cont4=3;
                                   if(tablero[i+3][s+3].substring(0, 3).equals(ficha)) {
-                                      cont4=4;
                                           if(tablero[i+4][s+4].substring(0, 3).equals(ficha)) {
-                                              cont4=5;
-                                              break;
+                                              cont4=cont4+1;
                                           } 
                                   } 
                           }
@@ -1850,116 +1844,117 @@ public class Sequence implements ActionListener{
               }
           }
         }
-        
+        /*
+        cambiar cont==5., poner si es 1 se le añade una sequencia a ese jugador , hacer variabbles de las sequencias de los jugadores           */
         if (ficha.equals("j1-")) {
-            if (cont1==5) {
+            if (cont1>=1) {
                 System.out.println(Jugador1+" completo una sequencia vertical");
             }
-            if (cont2==5) {
+            if (cont2>=1) {
                 System.out.println(Jugador1+" completo una sequencia horizontal");
             }
-            if (cont3==5) {
+            if (cont3>=1) {
                 System.out.println(Jugador1+" completo una sequencia diagonal hacia arriba");
             }
-            if (cont4==5) {
+            if (cont4>=1) {
                 System.out.println(Jugador1+" completo una sequencia diagonal hacia abajo");
             }
         }
         if(ficha.equals("j2-")) {
-            if (cont1==5) {
+            if (cont1>=1) {
                 System.out.println(Jugador2+" completo una sequencia vertical");
             }
-            if (cont2==5) {
+            if (cont2>=1) {
                 System.out.println(Jugador2+" completo una sequencia horizontal");
             }
-            if (cont3==5) {
+            if (cont3>=1) {
                 System.out.println(Jugador2+" completo una sequencia diagonal hacia arriba");
             }
-            if (cont4==5) {
+            if (cont4>=1) {
                 System.out.println(Jugador2+" completo una sequencia diagonal hacia abajo");
             }
         }
         if(ficha.equals("j3-")) {
-            if (cont1==5) {
+            if (cont1>=1) {
                 System.out.println(Jugador3+" completo una sequencia vertical");
             }
-            if (cont2==5) {
+            if (cont2>=1) {
                 System.out.println(Jugador3+" completo una sequencia horizontal");
             }
-            if (cont3==5) {
+            if (cont3>=1) {
                 System.out.println(Jugador3+" completo una sequencia diagonal hacia arriba");
             }
-            if (cont4==5) {
+            if (cont4>=1) {
                 System.out.println(Jugador3+" completo una sequencia diagonal hacia abajo");
             }
         }
         if(ficha.equals("j4-")) {
-            if (cont1==5) {
+            if (cont1>=1) {
                 System.out.println(Jugador4+" completo una sequencia vertical");
             }
-            if (cont2==5) {
+            if (cont2>=1) {
                 System.out.println(Jugador4+" completo una sequencia horizontal");
             }
-            if (cont3==5) {
+            if (cont3>=1) {
                 System.out.println(Jugador4+" completo una sequencia diagonal hacia arriba");
             }
-            if (cont4==5) {
+            if (cont4>=1) {
                 System.out.println(Jugador4+" completo una sequencia diagonal hacia abajo");
             }
         }
         if(ficha.equals("j5-")) {
-            if (cont1==5) {
+            if (cont1>=1) {
                 System.out.println(Jugador5+" completo una sequencia vertical");
             }
-            if (cont2==5) {
+            if (cont2>=1) {
                 System.out.println(Jugador5+" completo una sequencia horizontal");
             }
-            if (cont3==5) {
+            if (cont3>=1) {
                 System.out.println(Jugador5+" completo una sequencia diagonal hacia arriba");
             }
-            if (cont4==5) {
+            if (cont4>=1) {
                 System.out.println(Jugador5+" completo una sequencia diagonal hacia abajo");
             }
         }
         if(ficha.equals("j6-")) {
-            if (cont1==5) {
+            if (cont1>=1) {
                 System.out.println(Jugador6+" completo una sequencia vertical");
             }
-            if (cont2==5) {
+            if (cont2>=1) {
                 System.out.println(Jugador6+" completo una sequencia horizontal");
             }
-            if (cont3==5) {
+            if (cont3>=1) {
                 System.out.println(Jugador6+" completo una sequencia diagonal hacia arriba");
             }
-            if (cont4==5) {
+            if (cont4>=1) {
                 System.out.println(Jugador6+" completo una sequencia diagonal hacia abajo");
             }
         }
         if(ficha.equals("j7-")) {
-            if (cont1==5) {
+            if (cont1>=1) {
                 System.out.println(Jugador7+" completo una sequencia vertical");
             }
-            if (cont2==5) {
+            if (cont2>=1) {
                 System.out.println(Jugador7+" completo una sequencia horizontal");
             }
-            if (cont3==5) {
+            if (cont3>=1) {
                 System.out.println(Jugador7+" completo una sequencia diagonal hacia arriba");
             }
-            if (cont4==5) {
+            if (cont4>=1) {
                 System.out.println(Jugador7+" completo una sequencia diagonal hacia abajo");
             }
         }
         if(ficha.equals("j8-")) {
-            if (cont1==5) {
+            if (cont1>=1) {
                 System.out.println(Jugador8+" completo una sequencia vertical");
             }
-            if (cont2==5) {
+            if (cont2>=1) {
                 System.out.println(Jugador8+" completo una sequencia horizontal");
             }
-            if (cont3==5) {
+            if (cont3>=1) {
                 System.out.println(Jugador8+" completo una sequencia diagonal hacia arriba");
             }
-            if (cont4==5) {
+            if (cont4>=1) {
                 System.out.println(Jugador8+" completo una sequencia diagonal hacia abajo");
             }
         }
