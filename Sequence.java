@@ -4,14 +4,15 @@
  */
 package sequence;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
@@ -19,7 +20,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import static sequence.Tablero.jButton1;
 
 /**
  *
@@ -73,13 +73,22 @@ public class Sequence implements ActionListener{
     private final String Jugador7="Jugador7";
     private final String Jugador8="Jugador8";
     private boolean quiereOrdenar=false;
+    private int cantidadDeEquipos=2;
+    private int secEquipo1=0;
+    private int secEquipo2=0;
+    private int secEquipo3=0;
+    private String turnoEquipo="Equipo 1";
     
+    Set<String> secuenciasSumadas = new HashSet<>();
+    Set<String> secuenciasEnTablero = new HashSet<>();
+
     public Sequence() {
         inicializarTablero();
         tab.setVisible(true);
         añadirActionEvents();
         añadirFichasTablero();
         Tablero.NombreMazoTurno.setText(turno);
+        Tablero.turnoEquipo.setText(turnoEquipo);
     }
     
     private void inicializarTablero() {
@@ -906,6 +915,8 @@ public class Sequence implements ActionListener{
     }
     
     private void cambiarTurno(){
+        comprobarGane();
+        cambiarTurnoEquipo();
         if(turno.equals(Jugador1)){
             CambiarMazoEnPantalla(mazo2);
             turno=Jugador2;
@@ -914,7 +925,11 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual = null;  
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                        haySecuencia("j1-");
+                    if (cantidadDeEquipos==2) {
+                        haySecuencia("j1-","j3-","j5-","j7-");
+                    } else {
+                        haySecuencia("j1-","j4-","j1-","j4-");
+                    }
         } else if (turno.equals(Jugador2)) {
             if(cantidadDeJugadores==2) {
                 turno=Jugador1;
@@ -928,7 +943,11 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                        haySecuencia("j2-");
+                    if (cantidadDeEquipos==2) {
+                        haySecuencia("j2-","j4-","j6-","j8-");
+                    } else {
+                        haySecuencia("j2-","j5-","j2-","j5-");
+                    }
         } else if (turno.equals(Jugador3)){
             if(cantidadDeJugadores==3) {
                 turno=Jugador1;
@@ -942,7 +961,11 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;    
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                        haySecuencia("j3-");
+                    if (cantidadDeEquipos==2) {
+                        haySecuencia("j1-","j3-","j5-","j7-");
+                    } else {
+                        haySecuencia("j3-","j6-","j3-","j6-");
+                    }
         } else if (turno.equals(Jugador4)) {
             if(cantidadDeJugadores==4) {
                 turno=Jugador1;
@@ -956,7 +979,11 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                        haySecuencia("j4-");
+                    if (cantidadDeEquipos==2) {
+                        haySecuencia("j2-","j4-","j6-","j8-");
+                    } else {
+                        haySecuencia("j1-","j4-","j1-","j4-");
+                    }
         } else if (turno.equals(Jugador5)) {
             if(cantidadDeJugadores>=6) {
                 turno=Jugador6;
@@ -967,7 +994,11 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                        haySecuencia("j5-");
+                    if (cantidadDeEquipos==2) {
+                        haySecuencia("j1-","j3-","j5-","j7-");
+                    } else {
+                        haySecuencia("j5-","j2-","j5-","j2-");
+                    }
         }else if (turno.equals(Jugador6)) {
             if(cantidadDeJugadores==6) {
                 turno=Jugador1;
@@ -981,7 +1012,11 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                        haySecuencia("j6-");
+                    if (cantidadDeEquipos==2) {
+                        haySecuencia("j2-","j4-","j6-","j8-");
+                    } else {
+                        haySecuencia("j3-","j6-","j3-","j6-");
+                    }
         }else if (turno.equals(Jugador7)) {
             if(cantidadDeJugadores==8) {
                 turno=Jugador8;
@@ -992,7 +1027,9 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                        haySecuencia("j7-");
+                    if (cantidadDeEquipos==2) {
+                        haySecuencia("j1-","j3-","j5-","j7-");
+                    }
         } else if (turno.equals(Jugador8)) {
             if(cantidadDeJugadores==8) {
                 turno=Jugador1;
@@ -1003,7 +1040,9 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                        haySecuencia("j8-");
+                    if (cantidadDeEquipos==2) {
+                        haySecuencia("j2-","j4-","j6-","j8-");
+                    }
         }
         
         ocultarCartasDisponible();    
@@ -1632,6 +1671,9 @@ public class Sequence implements ActionListener{
                 }
             }
             CU.clear();
+            if (CM.isEmpty()) {
+                fichasMazo();
+            }
         }
     }
     
@@ -1754,210 +1796,448 @@ public class Sequence implements ActionListener{
         return false;
     }
     
-    private void haySecuencia(String ficha) {
-        int cont1=0;
-        for (int i = 0; i < tablero.length ; i++) {
-          for (int s=0; s<tablero.length; s++) {
-              if(i<6) {
-                if (tablero[i][s].substring(0, 3).equals(ficha)) {
-                    System.out.println(ficha+"1 vertical");
-                    if(tablero[i+1][s].substring(0, 3).equals(ficha)) {
-                        System.out.println(ficha+"2 vertical");
-                          if(tablero[i+2][s].substring(0, 3).equals(ficha)) {
-                              System.out.println(ficha+"3 vertical");
-                                  if(tablero[i+3][s].substring(0, 3).equals(ficha)) {
-                                      System.out.println(ficha+"4 vertical");
-                                          if(tablero[i+4][s].substring(0, 3).equals(ficha)) {
-                                              cont1=cont1+1;
-                                              System.out.println(ficha+"5 vertical");
-                                                  break;
-                                          } 
-                                  } 
-                          }   
-                    } 
+    private void haySecuencia(String ficha, String ficha2, String ficha3, String ficha4) {
+        Set<String> fichasUtilizadas = new HashSet<>();
+
+        for (int i = 0; i < tablero.length; i++) {
+            for (int s = 0; s < tablero.length; s++) {
+                if (i < 6) {
+                    if (tablero[i][s].substring(0, 3).equals(ficha) || tablero[i][s].substring(0,3).equals(ficha2) ||
+                            tablero[i][s].substring(0, 3).equals(ficha3) || tablero[i][s].substring(0,3).equals(ficha4) ||tablero[i][s].equals("Esquinas")) {
+                        if (tablero[i + 1][s].substring(0, 3).equals(ficha) || tablero[i+1][s].substring(0,3).equals(ficha2) ||
+                                tablero[i+1][s].substring(0, 3).equals(ficha3) || tablero[i+1][s].substring(0,3).equals(ficha4) ||tablero[i + 1][s].equals("Esquinas")) {
+                            if (tablero[i + 2][s].substring(0, 3).equals(ficha) || tablero[i+2][s].substring(0,3).equals(ficha2) ||
+                                    tablero[i+2][s].substring(0, 3).equals(ficha3) || tablero[i+2][s].substring(0,3).equals(ficha4) ||tablero[i + 2][s].equals("Esquinas")) {
+                                if (tablero[i + 3][s].substring(0, 3).equals(ficha) || tablero[i+3][s].substring(0,3).equals(ficha2) || 
+                                        tablero[i+3][s].substring(0, 3).equals(ficha3) || tablero[i+3][s].substring(0,3).equals(ficha4) || tablero[i + 3][s].equals("Esquinas")) {
+                                    if (tablero[i + 4][s].substring(0, 3).equals(ficha) || tablero[i+4][s].substring(0,3).equals(ficha2) ||
+                                            tablero[i+4][s].substring(0, 3).equals(ficha3) || tablero[i+4][s].substring(0,3).equals(ficha4) ||tablero[i + 4][s].equals("Esquinas")) {
+                                        String coordenadasSecuencia = i + "-" + s;
+                                        
+                                        if (!secuenciasSumadas.contains(coordenadasSecuencia)) {
+                                            secuenciasSumadas.add(coordenadasSecuencia);
+                                            
+                                            if (!fichasUtilizadas.contains(ficha)) {
+                                                fichasUtilizadas.add(ficha);
+                                                ponerSecuenciaEnPantallaV(i,s);
+                                                if (ficha.equals("j1-")) {
+                                                    secEquipo1=secEquipo1+1;
+                                                } else if (ficha.equals("j2-")) {
+                                                    secEquipo2=secEquipo2+1;
+                                                } else if (ficha.equals("j3-")) {
+                                                    if (cantidadDeEquipos!=3) {
+                                                    secEquipo1=secEquipo1+1;
+                                                    } else {
+                                                    secEquipo3=secEquipo3+1;
+                                                    }
+                                                } else if (ficha.equals("j4-")) {
+                                                    if (cantidadDeEquipos==3) {
+                                                    secEquipo1=secEquipo1+1;
+                                                    } else {
+                                                    secEquipo2=secEquipo2+1;
+                                                    }
+                                                } else if (ficha.equals("j5-")) {
+                                                    if (cantidadDeEquipos==3) {
+                                                    secEquipo2=secEquipo2+1;
+                                                    } else {
+                                                    secEquipo1=secEquipo1+1;
+                                                    }
+                                                } else if (ficha.equals("j6-")) {
+                                                    if (cantidadDeEquipos==3) {
+                                                    secEquipo3=secEquipo3+1;
+                                                    } else {
+                                                    secEquipo2=secEquipo2+1;
+                                                    }
+                                                } else if (ficha.equals("j7-")) {
+                                                    secEquipo1=secEquipo1+1;
+                                                } else if (ficha.equals("j8-")) {
+                                                    secEquipo2=secEquipo2+1;
+                                                }
+                                                System.out.println("secuencia vert");
+                                                        if (verificarSecuencia(ficha, i, s, 1, 1)) {
+                                                    restarPuntosSiSecuenciaNoExiste(ficha, i, s);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (s > 3) {
+                        if (tablero[i][s].substring(0, 3).equals(ficha) || tablero[i][s].substring(0,3).equals(ficha2) ||
+                                tablero[i][s].substring(0, 3).equals(ficha3) || tablero[i][s].substring(0,3).equals(ficha4) ||tablero[i][s].equals("Esquinas")) {
+                            if (tablero[i + 1][s - 1].substring(0, 3).equals(ficha) || tablero[i+1][s-1].substring(0,3).equals(ficha2) ||
+                                    tablero[i+1][s-1].substring(0, 3).equals(ficha3) || tablero[i+1][s-1].substring(0,3).equals(ficha4) ||tablero[i + 1][s - 1].equals("Esquinas")) {
+                                if (tablero[i + 2][s - 2].substring(0, 3).equals(ficha) || tablero[i+2][s-2].substring(0,3).equals(ficha2) ||
+                                        tablero[i+2][s-2].substring(0, 3).equals(ficha3) || tablero[i+2][s-2].substring(0,3).equals(ficha4) ||tablero[i + 2][s - 2].equals("Esquinas")) {
+                                    if (tablero[i + 3][s - 3].substring(0, 3).equals(ficha) || tablero[i+3][s-3].substring(0,3).equals(ficha2) ||
+                                            tablero[i+3][s-3].substring(0, 3).equals(ficha3) || tablero[i+3][s-3].substring(0,3).equals(ficha4) ||tablero[i + 3][s - 3].equals("Esquinas")) {
+                                        if (tablero[i + 4][s - 4].substring(0, 3).equals(ficha) || tablero[i+4][s-4].substring(0,3).equals(ficha2) ||
+                                                tablero[i+4][s-4].substring(0, 3).equals(ficha3) || tablero[i+4][s-4].substring(0,3).equals(ficha4) ||tablero[i + 4][s - 4].equals("Esquinas")) {
+                                            String coordenadasSecuencia = i + "-" + s;
+                                            
+                                            if (!secuenciasSumadas.contains(coordenadasSecuencia)) {
+                                                secuenciasSumadas.add(coordenadasSecuencia);
+
+                                                if (!fichasUtilizadas.contains(ficha)) {
+                                                    fichasUtilizadas.add(ficha);
+                                                    ponerSecuenciaEnPantallaDArriba(i,s);
+                                                    if (ficha.equals("j1-")) {
+                                                        secEquipo1=secEquipo1+1;
+                                                    } else if (ficha.equals("j2-")) {
+                                                        secEquipo2=secEquipo2+1;
+                                                    } else if (ficha.equals("j3-")) {
+                                                        if (cantidadDeEquipos!=3) {
+                                                        secEquipo1=secEquipo1+1;
+                                                        } else {
+                                                        secEquipo3=secEquipo3+1;
+                                                        }
+                                                    } else if (ficha.equals("j4-")) {
+                                                        if (cantidadDeEquipos==3) {
+                                                        secEquipo1=secEquipo1+1;
+                                                        } else {
+                                                        secEquipo2=secEquipo2+1;
+                                                        }
+                                                    } else if (ficha.equals("j5-")) {
+                                                        if (cantidadDeEquipos==3) {
+                                                        secEquipo2=secEquipo2+1;
+                                                        } else {
+                                                        secEquipo1=secEquipo1+1;
+                                                        }
+                                                    } else if (ficha.equals("j6-")) {
+                                                        if (cantidadDeEquipos==3) {
+                                                        secEquipo3=secEquipo3+1;
+                                                        } else {
+                                                        secEquipo2=secEquipo2+1;
+                                                        }
+                                                    } else if (ficha.equals("j7-")) {
+                                                        secEquipo1=secEquipo1+1;
+                                                    } else if (ficha.equals("j8-")) {
+                                                        secEquipo2=secEquipo2+1;
+                                                    }
+                                                    System.out.println("secuencia diag arriba");
+                                                    if (verificarSecuencia(ficha, i, s, 1, 1)) {
+                                            restarPuntosSiSecuenciaNoExiste(ficha, i, s);
+                                        }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-          }
+
+                if (s < 6) {
+                    if (tablero[i][s].substring(0, 3).equals(ficha) || tablero[i][s].substring(0,3).equals(ficha2)  ||
+                            tablero[i][s].substring(0, 3).equals(ficha3) || tablero[i][s].substring(0,3).equals(ficha4) ||tablero[i][s].equals("Esquinas")) {
+                        if (tablero[i][s + 1].substring(0, 3).equals(ficha) || tablero[i][s+1].substring(0,3).equals(ficha2) ||
+                                tablero[i][s+1].substring(0, 3).equals(ficha3) || tablero[i][s+1].substring(0,3).equals(ficha4) ||tablero[i][s + 1].equals("Esquinas")) {
+                            if (tablero[i][s + 2].substring(0, 3).equals(ficha) || tablero[i][s+2].substring(0,3).equals(ficha2) ||
+                                    tablero[i][s+2].substring(0, 3).equals(ficha3) || tablero[i][s+2].substring(0,3).equals(ficha4) ||tablero[i][s + 2].equals("Esquinas")) {
+                                if (tablero[i][s + 3].substring(0, 3).equals(ficha) || tablero[i][s+3].substring(0,3).equals(ficha2) ||
+                                        tablero[i][s+3].substring(0, 3).equals(ficha3) || tablero[i][s].substring(0,3).equals(ficha4) ||tablero[i][s + 3].equals("Esquinas")) {
+                                    if (tablero[i][s + 4].substring(0, 3).equals(ficha) || tablero[i][s+4].substring(0,3).equals(ficha2) ||
+                                            tablero[i][s+4].substring(0, 3).equals(ficha3) || tablero[i][s+4].substring(0,3).equals(ficha4) ||tablero[i][s + 4].equals("Esquinas")) {
+                                        String coordenadasSecuencia = i + "-" + s;
+
+                                        if (!secuenciasSumadas.contains(coordenadasSecuencia)) {
+                                            secuenciasSumadas.add(coordenadasSecuencia);
+
+                                            if (!fichasUtilizadas.contains(ficha)) {
+                                                fichasUtilizadas.add(ficha);
+                                                ponerSecuenciaEnPantallaH(i,s);
+                                                if (ficha.equals("j1-")) {
+                                                    secEquipo1=secEquipo1+1;
+                                                } else if (ficha.equals("j2-")) {
+                                                    secEquipo2=secEquipo2+1;
+                                                } else if (ficha.equals("j3-")) {
+                                                    if (cantidadDeEquipos!=3) {
+                                                    secEquipo1=secEquipo1+1;
+                                                    } else {
+                                                    secEquipo3=secEquipo3+1;
+                                                    }
+                                                } else if (ficha.equals("j4-")) {
+                                                    if (cantidadDeEquipos==3) {
+                                                    secEquipo1=secEquipo1+1;
+                                                    } else {
+                                                    secEquipo2=secEquipo2+1;
+                                                    }
+                                                } else if (ficha.equals("j5-")) {
+                                                    if (cantidadDeEquipos==3) {
+                                                    secEquipo2=secEquipo2+1;
+                                                    } else {
+                                                    secEquipo1=secEquipo1+1;
+                                                    }
+                                                } else if (ficha.equals("j6-")) {
+                                                    if (cantidadDeEquipos==3) {
+                                                    secEquipo3=secEquipo3+1;
+                                                    } else {
+                                                    secEquipo2=secEquipo2+1;
+                                                    }
+                                                } else if (ficha.equals("j7-")) {
+                                                    secEquipo1=secEquipo1+1;
+                                                } else if (ficha.equals("j8-")) {
+                                                    secEquipo2=secEquipo2+1;
+                                                }
+                                                System.out.println("secuencia horiz");
+                                                if (verificarSecuencia(ficha, i, s, 1, 1)) {
+                                            restarPuntosSiSecuenciaNoExiste(ficha, i, s);
+                                        }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (i < 6 && s < 6) {
+                    if (tablero[i][s].substring(0, 3).equals(ficha) || tablero[i][s].substring(0,3).equals(ficha2) ||
+                            tablero[i][s].substring(0, 3).equals(ficha3) || tablero[i][s].substring(0,3).equals(ficha4) ||tablero[i][s].equals("Esquinas")) {
+                        if (tablero[i + 1][s + 1].substring(0, 3).equals(ficha) || tablero[i+1][s+1].substring(0,3).equals(ficha2) ||
+                                tablero[i+1][s+1].substring(0, 3).equals(ficha3) || tablero[i+1][s+1].substring(0,3).equals(ficha4) ||tablero[i + 1][s + 1].equals("Esquinas")) {
+                            if (tablero[i + 2][s + 2].substring(0, 3).equals(ficha) || tablero[i+2][s+2].substring(0,3).equals(ficha2) ||
+                                    tablero[i+2][s+2].substring(0, 3).equals(ficha3) || tablero[i+2][s+2].substring(0,3).equals(ficha4) ||tablero[i + 2][s + 2].equals("Esquinas")) {
+                                if (tablero[i + 3][s + 3].substring(0, 3).equals(ficha) || tablero[i+3][s+3].substring(0,3).equals(ficha2) ||
+                                        tablero[i+3][s+3].substring(0, 3).equals(ficha3) || tablero[i+3][s+3].substring(0,3).equals(ficha4) ||tablero[i + 3][s + 3].equals("Esquinas")) {
+                                    if (tablero[i + 4][s + 4].substring(0, 3).equals(ficha) || tablero[i+4][s+4].substring(0,3).equals(ficha2) ||
+                                            tablero[i+4][s+4].substring(0, 3).equals(ficha3) || tablero[i+4][s+4].substring(0,3).equals(ficha4) ||tablero[i + 4][s + 4].equals("Esquinas")) {
+                                        String coordenadasSecuencia = i + "-" + s;
+                                        
+                                        if (!secuenciasSumadas.contains(coordenadasSecuencia)) {
+                                            secuenciasSumadas.add(coordenadasSecuencia);
+
+                                            if (!fichasUtilizadas.contains(ficha)) {
+                                                fichasUtilizadas.add(ficha);
+                                                ponerSecuenciaEnPantallaDAbajo(i,s);
+                                                if (ficha.equals("j1-")) {
+                                                    secEquipo1=secEquipo1+1;
+                                                } else if (ficha.equals("j2-")) {
+                                                    secEquipo2=secEquipo2+1;
+                                                } else if (ficha.equals("j3-")) {
+                                                    if (cantidadDeEquipos!=3) {
+                                                    secEquipo1=secEquipo1+1;
+                                                    } else {
+                                                    secEquipo3=secEquipo3+1;
+                                                    }
+                                                } else if (ficha.equals("j4-")) {
+                                                    if (cantidadDeEquipos==3) {
+                                                    secEquipo1=secEquipo1+1;
+                                                    } else {
+                                                    secEquipo2=secEquipo2+1;
+                                                    }
+                                                } else if (ficha.equals("j5-")) {
+                                                    if (cantidadDeEquipos==3) {
+                                                    secEquipo2=secEquipo2+1;
+                                                    } else {
+                                                    secEquipo1=secEquipo1+1;
+                                                    }
+                                                } else if (ficha.equals("j6-")) {
+                                                    if (cantidadDeEquipos==3) {
+                                                    secEquipo3=secEquipo3+1;
+                                                    } else {
+                                                    secEquipo2=secEquipo2+1;
+                                                    }
+                                                } else if (ficha.equals("j7-")) {
+                                                    secEquipo1=secEquipo1+1;
+                                                } else if (ficha.equals("j8-")) {
+                                                    secEquipo2=secEquipo2+1;
+                                                }
+                                                
+                                                System.out.println("secuencia diag abajo");
+                                                        if (verificarSecuencia(ficha, i, s, 1, 1)) {
+                                                    restarPuntosSiSecuenciaNoExiste(ficha, i, s);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        System.out.println("-*-*-*-*-*-*-*");
+        System.out.println(secEquipo1);
+        System.out.println(secEquipo2);
+        System.out.println(secEquipo3);
+        System.out.println("-*-*-*-*-*-*-*-*-*");
+    }
+    
+    private boolean verificarSecuencia(String ficha, int x, int y, int dx, int dy) {
+    int cantidad = 0;
+
+    for (int k = 0; k < 5; k++) {
+        int nx = x + k * dx;
+        int ny = y + k * dy;
+
+        if (nx < 0 || nx >= tablero.length || ny < 0 || ny >= tablero[x].length ||
+            (!tablero[nx][ny].substring(0, 3).equals(ficha) && !tablero[nx][ny].equals("Esquinas"))) {
+            break; 
         }
 
-        int cont2=0;
-        for (int i = 0; i < tablero.length ; i++) {
-          for (int s=0; s<tablero.length; s++) {
-              if(s<6) {
-                if (tablero[i][s].substring(0, 3).equals(ficha)) {
-                    System.out.println(ficha+"1 horizontal");
-                    if(tablero[i][s+1].substring(0, 3).equals(ficha)) {
-                        System.out.println(ficha+"2 horizontal");
-                          if(tablero[i][s+2].substring(0, 3).equals(ficha)) {
-                              System.out.println(ficha+"3 horizontal");
-                                  if(tablero[i][s+3].substring(0, 3).equals(ficha)) {
-                                      System.out.println(ficha+"4 horizontal");
-                                          if(tablero[i][s+4].substring(0, 3).equals(ficha)) {
-                                              cont2=cont2+1;
-                                              System.out.println(ficha+"5 horizontal");
-                                              break;
-                                          } 
-                                  } 
-                          }   
-                    } 
-                }
-              }
-          }
-        }
-        
-        int cont3=0;
-        for (int i = 0; i < tablero.length ; i++) {
-          for (int s=0; s<tablero.length; s++) {
-              if(i<6 && s>3) {
-                if (tablero[i][s].substring(0, 3).equals(ficha)) {
-                    System.out.println(ficha+"===============1 DIAG");
-                    if(tablero[i+1][s-1].substring(0, 3).equals(ficha)) {
-                        System.out.println(ficha+"===============2 Diag");
-                          if(tablero[i+2][s-2].substring(0, 3).equals(ficha)) {
-                                  if(tablero[i+3][s-3].substring(0, 3).equals(ficha)) {
-                                          if(tablero[i+4][s-4].substring(0, 3).equals(ficha)) {
-                                              cont3=cont3+1;
-                                          } 
-                                  } 
-                          }   
-                    } 
-                }
-             }
-          }
-        }
-        
-        int cont4=0;
-        for (int i = 0; i < tablero.length ; i++) {
-          for (int s=0; s<tablero.length; s++) {
-              if(i<6 && s<6) {
-                if (tablero[i][s].substring(0, 3).equals(ficha)) {
-                    if(tablero[i+1][s+1].substring(0, 3).equals(ficha)) {
-                          if(tablero[i+2][s+2].substring(0, 3).equals(ficha)) {
-                                  if(tablero[i+3][s+3].substring(0, 3).equals(ficha)) {
-                                          if(tablero[i+4][s+4].substring(0, 3).equals(ficha)) {
-                                              cont4=cont4+1;
-                                          } 
-                                  } 
-                          }
-                    } 
-                }
-              }
-          }
-        }
-        /*
-        cambiar cont==5., poner si es 1 se le añade una sequencia a ese jugador , hacer variabbles de las sequencias de los jugadores           */
+        cantidad++;
+    }
+
+    if (cantidad == 5) {
+        secuenciasSumadas.add(x + "-" + y);
+    }
+
+    return cantidad == 5;
+}
+
+private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
+    if (!verificarSecuencia(ficha, x, y, 1, 0) && !verificarSecuencia(ficha, x, y, 1, -1) &&
+        !verificarSecuencia(ficha, x, y, 0, 1) && !verificarSecuencia(ficha, x, y, 1, 1)) {
+
         if (ficha.equals("j1-")) {
-            if (cont1>=1) {
-                System.out.println(Jugador1+" completo una sequencia vertical");
+            secEquipo1 = secEquipo1 - 1; 
+        } else if (ficha.equals("j2-")) {
+            secEquipo2 = secEquipo2 - 1; 
+        } else if (ficha.equals("j3-")) {
+            if (cantidadDeEquipos != 3) {
+                secEquipo1 = secEquipo1 - 1;
+            } else {
+                secEquipo3 = secEquipo3 - 1;
             }
-            if (cont2>=1) {
-                System.out.println(Jugador1+" completo una sequencia horizontal");
+        } else if (ficha.equals("j4-")) {
+            if (cantidadDeEquipos == 3) {
+                secEquipo1 = secEquipo1 - 1;
+            } else {
+                secEquipo2 = secEquipo2 - 1;
             }
-            if (cont3>=1) {
-                System.out.println(Jugador1+" completo una sequencia diagonal hacia arriba");
+        } else if (ficha.equals("j5-")) {
+            if (cantidadDeEquipos == 3) {
+                secEquipo2 = secEquipo2 - 1;
+            } else {
+                secEquipo1 = secEquipo1 - 1;
             }
-            if (cont4>=1) {
-                System.out.println(Jugador1+" completo una sequencia diagonal hacia abajo");
+        } else if (ficha.equals("j6-")) {
+            if (cantidadDeEquipos == 3) {
+                secEquipo3 = secEquipo3 - 1;
+            } else {
+                secEquipo2 = secEquipo2 - 1;
+            }
+        } else if (ficha.equals("j7-")) {
+            secEquipo1 = secEquipo1 - 1; 
+        } else if (ficha.equals("j8-")) {
+            secEquipo2 = secEquipo2 - 1; 
+        }
+
+        System.out.println("Secuencia eliminada, resta puntos");
+    }
+}
+    
+    private void comprobarGane() {
+        if (cantidadDeEquipos==3) {
+            if (secEquipo1==2) {
+                JOptionPane.showMessageDialog(null, "Ha ganada el equipo 1 al completar dos secuencias");
+            }
+            if (secEquipo2==2) {
+                JOptionPane.showMessageDialog(null, "Ha ganada el equipo 2 al completar dos secuencias");
+            }
+            if (secEquipo3==2) {
+                JOptionPane.showMessageDialog(null, "Ha ganada el equipo 3 al completar dos secuencias");
             }
         }
-        if(ficha.equals("j2-")) {
-            if (cont1>=1) {
-                System.out.println(Jugador2+" completo una sequencia vertical");
+        if (cantidadDeEquipos==2) {
+            if (secEquipo1==2) {
+                JOptionPane.showMessageDialog(null, "Ha ganada el equipo 1 al completar dos secuencias");
             }
-            if (cont2>=1) {
-                System.out.println(Jugador2+" completo una sequencia horizontal");
-            }
-            if (cont3>=1) {
-                System.out.println(Jugador2+" completo una sequencia diagonal hacia arriba");
-            }
-            if (cont4>=1) {
-                System.out.println(Jugador2+" completo una sequencia diagonal hacia abajo");
-            }
-        }
-        if(ficha.equals("j3-")) {
-            if (cont1>=1) {
-                System.out.println(Jugador3+" completo una sequencia vertical");
-            }
-            if (cont2>=1) {
-                System.out.println(Jugador3+" completo una sequencia horizontal");
-            }
-            if (cont3>=1) {
-                System.out.println(Jugador3+" completo una sequencia diagonal hacia arriba");
-            }
-            if (cont4>=1) {
-                System.out.println(Jugador3+" completo una sequencia diagonal hacia abajo");
-            }
-        }
-        if(ficha.equals("j4-")) {
-            if (cont1>=1) {
-                System.out.println(Jugador4+" completo una sequencia vertical");
-            }
-            if (cont2>=1) {
-                System.out.println(Jugador4+" completo una sequencia horizontal");
-            }
-            if (cont3>=1) {
-                System.out.println(Jugador4+" completo una sequencia diagonal hacia arriba");
-            }
-            if (cont4>=1) {
-                System.out.println(Jugador4+" completo una sequencia diagonal hacia abajo");
-            }
-        }
-        if(ficha.equals("j5-")) {
-            if (cont1>=1) {
-                System.out.println(Jugador5+" completo una sequencia vertical");
-            }
-            if (cont2>=1) {
-                System.out.println(Jugador5+" completo una sequencia horizontal");
-            }
-            if (cont3>=1) {
-                System.out.println(Jugador5+" completo una sequencia diagonal hacia arriba");
-            }
-            if (cont4>=1) {
-                System.out.println(Jugador5+" completo una sequencia diagonal hacia abajo");
-            }
-        }
-        if(ficha.equals("j6-")) {
-            if (cont1>=1) {
-                System.out.println(Jugador6+" completo una sequencia vertical");
-            }
-            if (cont2>=1) {
-                System.out.println(Jugador6+" completo una sequencia horizontal");
-            }
-            if (cont3>=1) {
-                System.out.println(Jugador6+" completo una sequencia diagonal hacia arriba");
-            }
-            if (cont4>=1) {
-                System.out.println(Jugador6+" completo una sequencia diagonal hacia abajo");
-            }
-        }
-        if(ficha.equals("j7-")) {
-            if (cont1>=1) {
-                System.out.println(Jugador7+" completo una sequencia vertical");
-            }
-            if (cont2>=1) {
-                System.out.println(Jugador7+" completo una sequencia horizontal");
-            }
-            if (cont3>=1) {
-                System.out.println(Jugador7+" completo una sequencia diagonal hacia arriba");
-            }
-            if (cont4>=1) {
-                System.out.println(Jugador7+" completo una sequencia diagonal hacia abajo");
-            }
-        }
-        if(ficha.equals("j8-")) {
-            if (cont1>=1) {
-                System.out.println(Jugador8+" completo una sequencia vertical");
-            }
-            if (cont2>=1) {
-                System.out.println(Jugador8+" completo una sequencia horizontal");
-            }
-            if (cont3>=1) {
-                System.out.println(Jugador8+" completo una sequencia diagonal hacia arriba");
-            }
-            if (cont4>=1) {
-                System.out.println(Jugador8+" completo una sequencia diagonal hacia abajo");
+            if (secEquipo2==2) {
+                JOptionPane.showMessageDialog(null, "Ha ganada el equipo 2 al completar dos secuencias");
             }
         }
     }
     
+    private void ponerSecuenciaEnPantallaH(int i, int s) {
+                    Tablero.secuenciaComp.setText("El equipo de "+turno+" ha completado la siguiente secuencia");
+                    if (tablero[i][s].equals("Esquinas")) {
+                        Tablero.secCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s]+".png")));
+                    } else {
+                        Tablero.secCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s].substring(3)+".png")));
+                    }
+                    Tablero.secCarta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s+1].substring(3)+".png")));
+                    Tablero.secCarta3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s+2].substring(3)+".png")));
+                    Tablero.secCarta4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s+3].substring(3)+".png")));
+                    if (tablero[i][s+4].equals("Esquinas")) {
+                        Tablero.secCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s+4]+".png")));
+                    } else {
+                        Tablero.secCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s+4].substring(3)+".png")));
+                    }
+    }
+    private void ponerSecuenciaEnPantallaV(int i, int s) {
+                    Tablero.secuenciaComp.setText("El equipo de "+turno+"ha completado la siguiente secuencia");
+                    if (tablero[i][s].equals("Esquinas")) {
+                        Tablero.secCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s]+".png")));
+                    } else {
+                        Tablero.secCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s].substring(3)+".png")));
+                    }
+                    Tablero.secCarta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+1][s].substring(3)+".png")));
+                    Tablero.secCarta3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+2][s].substring(3)+".png")));
+                    Tablero.secCarta4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+3][s].substring(3)+".png")));
+                    if (tablero[i+4][s].equals("Esquinas")) {
+                        Tablero.secCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+4][s]+".png")));
+                    } else {
+                        Tablero.secCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+4][s].substring(3)+".png")));
+                    }
+    }
+    private void ponerSecuenciaEnPantallaDArriba(int i, int s) {
+                    Tablero.secuenciaComp.setText("El equipo de "+turno+"ha completado la siguiente secuencia");
+                    if (tablero[i][s].equals("Esquinas")) {
+                        Tablero.secCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s]+".png")));
+                    } else {
+                        Tablero.secCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s].substring(3)+".png")));
+                    }
+                    Tablero.secCarta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+1][s-1].substring(3)+".png")));
+                    Tablero.secCarta3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+2][s-2].substring(3)+".png")));
+                    Tablero.secCarta4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+3][s-3].substring(3)+".png")));
+                    if (tablero[i+4][s-4].equals("Esquinas")) {
+                        Tablero.secCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+4][s-4]+".png")));
+                    } else {
+                    Tablero.secCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+4][s-4].substring(3)+".png")));
+                    }
+    }
+    private void ponerSecuenciaEnPantallaDAbajo(int i, int s) {
+                    Tablero.secuenciaComp.setText("El equipo de "+turno+"ha completado la siguiente secuencia");
+                    if (tablero[i][s].equals("Esquinas")) {
+                        Tablero.secCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s]+".png")));
+                    } else {
+                        Tablero.secCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s].substring(3)+".png")));
+                    }
+                    Tablero.secCarta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+1][s+1].substring(3)+".png")));
+                    Tablero.secCarta3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+2][s+2].substring(3)+".png")));
+                    Tablero.secCarta4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+3][s+3].substring(3)+".png")));
+                    if (tablero[i+4][s+4].equals("Esquinas")) {
+                        Tablero.secCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+4][s+4]+".png")));
+                    } else {
+                        Tablero.secCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+4][s+4].substring(3)+".png")));
+                    }
+    }
+    
+    private void cambiarTurnoEquipo() {
+        if (cantidadDeEquipos==2) {
+            if (turnoEquipo.equals("Equipo 1")) {
+                turnoEquipo="Equipo 2";
+            } else {
+                turnoEquipo="Equipo 1";
+            }
+        } else {
+            if (turnoEquipo.equals("Equipo 1")) {
+                turnoEquipo="Equipo 2";
+            } else if (turnoEquipo.equals("Equipo 2")) {
+                turnoEquipo="Equipo 3";
+            } else if (turnoEquipo.equals("Equipo 3")) {
+                turnoEquipo="Equipo 1";
+            }
+        }
+        Tablero.turnoEquipo.setText(turnoEquipo);
+    }
 }
