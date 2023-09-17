@@ -82,7 +82,7 @@ public class CrearUsuario extends javax.swing.JFrame {
                 RegresarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(RegresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 460, 90, 30));
+        jPanel1.add(RegresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 100, 30));
 
         Fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
@@ -112,8 +112,8 @@ public class CrearUsuario extends javax.swing.JFrame {
         if(!contra.equals("") && !username.equals("")){
             if(contra.equals(ConfirmarContra.getText())){
                 try{
-                    if(adminuser.buscarUser(username)==-1){
-                        adminuser.crearUser(username, contra, 0, fechacreacion);
+                    if(adminuser.BuscarUser(username)==-1){
+                        adminuser.CrearUser(username, contra, 0, fechacreacion);
                         JOptionPane.showMessageDialog(null, "Se creó el usuario exitosamente", "Usuario creado", JOptionPane.INFORMATION_MESSAGE);
                         AdminPantallas.AbrirMenuInicio();
                         this.dispose();

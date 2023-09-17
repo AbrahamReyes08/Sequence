@@ -26,7 +26,8 @@ public class IniciarSesion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         ContraseñaTxT = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -88,6 +89,22 @@ public class IniciarSesion extends javax.swing.JFrame {
                 if(adminuser.getUsuario(username)!=null){
                     ArrayList<Object> usuario = adminuser.getUsuario(username);
                     if(usuario.get(1).equals(contra)){
+                        adminuser.setUserlog(username);
+                        ArrayList<Object> config = adminuser.getConfigUser(username);
+                        if(config.get(0).equals(0))
+                            ConfiguracionPartida.setCantjugadores(2);
+                        else if(config.get(0).equals(1))
+                            ConfiguracionPartida.setCantjugadores(3); 
+                        else if(config.get(0).equals(2))
+                            ConfiguracionPartida.setCantjugadores(4);  
+                        else if(config.get(0).equals(3))
+                            ConfiguracionPartida.setCantjugadores(6);
+                        else if(config.get(0).equals(4))
+                            ConfiguracionPartida.setCantjugadores(8);
+                        if(config.get(1).equals(true))
+                            ConfiguracionPartida.setCompartirColor(true);
+                        else if (config.get(1).equals(false))
+                            ConfiguracionPartida.setCompartirColor(false);
                         AdminPantallas.AbrirMenuPrincipal();
                         this.dispose();
                     } else

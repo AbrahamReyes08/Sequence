@@ -13,9 +13,9 @@ public class AdminPantallas {
     
     public static void AbrirCrearJugador(){
         try{
-        CrearUsuario crearjugador = new CrearUsuario();
-        crearjugador.setVisible(true);
-        crearjugador.setLocationRelativeTo(null);
+            CrearUsuario crearjugador = new CrearUsuario();
+            crearjugador.setVisible(true);
+            crearjugador.setLocationRelativeTo(null);
         }catch(IOException e){
             JOptionPane.showMessageDialog(null, "Vaya parece que esto no debía pasar", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -23,19 +23,50 @@ public class AdminPantallas {
     
     public static void AbrirIniciarSesion(){
         try{
-        IniciarSesion iniciarsesion = new IniciarSesion();
-        iniciarsesion.setVisible(true);
+            IniciarSesion iniciarsesion = new IniciarSesion();
+            iniciarsesion.setVisible(true);
         }catch(IOException e){
             JOptionPane.showMessageDialog(null, "Vaya parece que esto no debía pasar", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }
     public static void AbrirMenuPrincipal(){
-        MenuPrincipal menuprincipal = new MenuPrincipal();
-        menuprincipal.setVisible(true);
+        try{
+            MenuPrincipal menuprincipal = new MenuPrincipal();
+            menuprincipal.setVisible(true);
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Vaya parece que esto no debía pasar", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     public static void AbrirSequence(){
         Sequence sequence = new Sequence();
+    }
+    
+    public static void AbrirConfiguracion(){
+        try{
+            Configuracion configuracion = new Configuracion();
+            configuracion.setVisible(true);
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Vaya parece que esto no debía pasar", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public static void AbrirMenuEquipos(){
+        try{
+            PrePartida prepartida = new PrePartida();
+            prepartida.setVisible(true);
+        }catch (IOException e){
+            JOptionPane.showMessageDialog(null, "Vaya parece que esto no debía pasar", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public static void AbrirReportes(){
+        try{
+            Reportes reportes = new Reportes();
+            reportes.setVisible(true);
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Vaya parece que esto no debía pasar", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
