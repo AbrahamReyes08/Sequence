@@ -20,6 +20,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import java.io.IOException;
 
 /**
  *
@@ -55,7 +56,7 @@ public class Sequence implements ActionListener{
     private String cartaAnterior="";
     private Timer timer;
     private boolean timertask=false;
-    private int cantidadDeJugadores=4;
+    private int cantidadDeJugadores=ConfiguracionPartida.getCantjugadores();
     private String colorJug1;
     private String colorJug2;
     private String colorJug3;
@@ -919,18 +920,23 @@ public class Sequence implements ActionListener{
         cambiarTurnoEquipo();
         if(turno.equals(Jugador1)){
             CambiarMazoEnPantalla(mazo2);
+            if (cantidadDeEquipos==2) {
+                        haySecuencia("j1-","j3-","j5-","j7-");
+                    } else {
+                        haySecuencia("j1-","j4-","j1-","j4-");
+                    }
             turno=Jugador2;
             Tablero.NombreMazoTurno.setText(turno);
                     posicionNueva = null;
                     posicionAntigua = null;
                     posicionActual = null;  
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                    if (cantidadDeEquipos==2) {
-                        haySecuencia("j1-","j3-","j5-","j7-");
-                    } else {
-                        haySecuencia("j1-","j4-","j1-","j4-");
-                    }
         } else if (turno.equals(Jugador2)) {
+            if (cantidadDeEquipos==2) {
+                        haySecuencia("j2-","j4-","j6-","j8-");
+                    } else {
+                        haySecuencia("j2-","j5-","j2-","j5-");
+                    }
             if(cantidadDeJugadores==2) {
                 turno=Jugador1;
                 CambiarMazoEnPantalla(mazo1);
@@ -943,12 +949,12 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                    if (cantidadDeEquipos==2) {
-                        haySecuencia("j2-","j4-","j6-","j8-");
-                    } else {
-                        haySecuencia("j2-","j5-","j2-","j5-");
-                    }
         } else if (turno.equals(Jugador3)){
+            if (cantidadDeEquipos==2) {
+                        haySecuencia("j1-","j3-","j5-","j7-");
+                    } else {
+                        haySecuencia("j3-","j6-","j3-","j6-");
+                    }
             if(cantidadDeJugadores==3) {
                 turno=Jugador1;
                 CambiarMazoEnPantalla(mazo1);
@@ -961,12 +967,13 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;    
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                    if (cantidadDeEquipos==2) {
-                        haySecuencia("j1-","j3-","j5-","j7-");
-                    } else {
-                        haySecuencia("j3-","j6-","j3-","j6-");
-                    }
+                    
         } else if (turno.equals(Jugador4)) {
+            if (cantidadDeEquipos==2) {
+                        haySecuencia("j2-","j4-","j6-","j8-");
+                    } else {
+                        haySecuencia("j1-","j4-","j1-","j4-");
+                    }
             if(cantidadDeJugadores==4) {
                 turno=Jugador1;
                 CambiarMazoEnPantalla(mazo1);
@@ -979,12 +986,13 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                    if (cantidadDeEquipos==2) {
-                        haySecuencia("j2-","j4-","j6-","j8-");
-                    } else {
-                        haySecuencia("j1-","j4-","j1-","j4-");
-                    }
+                    
         } else if (turno.equals(Jugador5)) {
+            if (cantidadDeEquipos==2) {
+                        haySecuencia("j1-","j3-","j5-","j7-");
+                    } else {
+                        haySecuencia("j5-","j2-","j5-","j2-");
+                    }
             if(cantidadDeJugadores>=6) {
                 turno=Jugador6;
                 CambiarMazoEnPantalla(mazo6);
@@ -994,12 +1002,13 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                    if (cantidadDeEquipos==2) {
-                        haySecuencia("j1-","j3-","j5-","j7-");
-                    } else {
-                        haySecuencia("j5-","j2-","j5-","j2-");
-                    }
+                    
         }else if (turno.equals(Jugador6)) {
+            if (cantidadDeEquipos==2) {
+                        haySecuencia("j2-","j4-","j6-","j8-");
+                    } else {
+                        haySecuencia("j3-","j6-","j3-","j6-");
+                    }
             if(cantidadDeJugadores==6) {
                 turno=Jugador1;
                 CambiarMazoEnPantalla(mazo1);
@@ -1012,12 +1021,11 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                    if (cantidadDeEquipos==2) {
-                        haySecuencia("j2-","j4-","j6-","j8-");
-                    } else {
-                        haySecuencia("j3-","j6-","j3-","j6-");
-                    }
+                    
         }else if (turno.equals(Jugador7)) {
+            if (cantidadDeEquipos==2) {
+                        haySecuencia("j1-","j3-","j5-","j7-");
+                    }
             if(cantidadDeJugadores==8) {
                 turno=Jugador8;
                 CambiarMazoEnPantalla(mazo8);
@@ -1027,10 +1035,11 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                    if (cantidadDeEquipos==2) {
-                        haySecuencia("j1-","j3-","j5-","j7-");
-                    }
+                    
         } else if (turno.equals(Jugador8)) {
+            if (cantidadDeEquipos==2) {
+                        haySecuencia("j2-","j4-","j6-","j8-");
+                    }
             if(cantidadDeJugadores==8) {
                 turno=Jugador1;
                 CambiarMazoEnPantalla(mazo1);
@@ -1040,9 +1049,7 @@ public class Sequence implements ActionListener{
                     posicionAntigua = null;
                     posicionActual=null;
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
-                    if (cantidadDeEquipos==2) {
-                        haySecuencia("j2-","j4-","j6-","j8-");
-                    }
+                    
         }
         
         ocultarCartasDisponible();    
