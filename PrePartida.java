@@ -1,11 +1,14 @@
 package sequence;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class PrePartida extends javax.swing.JFrame {
 
@@ -14,6 +17,7 @@ public class PrePartida extends javax.swing.JFrame {
     ArrayList<String> usuariospartida = new ArrayList();
     ArrayList<String> equipo1 = new ArrayList();
     ArrayList<String> equipo2 = new ArrayList();
+    ArrayList<String> equipo3 = new ArrayList();
     ArrayList<JComboBox<String>> totalcombobox = new ArrayList<>();
     
     public PrePartida() throws IOException {
@@ -21,6 +25,19 @@ public class PrePartida extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         GenerarComboBox(ConfiguracionPartida.getCantjugadores(), Equipo1Panel, 1);
         GenerarComboBox(ConfiguracionPartida.getCantjugadores(), Equipo2Panel, 2);
+        if(ConfiguracionPartida.getCantjugadores()==6){
+            jLabel2.setText("Equipo 2");
+            jLabel3.setText("Equipo 3");
+            GenerarComboBox(ConfiguracionPartida.getCantjugadores(), Equipo3Panel, 3);
+        }else{
+            jLabel2.setVisible(false);
+            JLabel relleno = new JLabel();
+            relleno.setFont(new Font("Arial", Font.PLAIN, 24));
+            relleno.setText("VS");
+            relleno.setVerticalAlignment(SwingConstants.CENTER);
+            relleno.setHorizontalAlignment(SwingConstants.CENTER);
+            Equipo3Panel.add(relleno);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -36,6 +53,8 @@ public class PrePartida extends javax.swing.JFrame {
         Titulo = new javax.swing.JLabel();
         AceptarBtn = new javax.swing.JButton();
         CancelarBtn = new javax.swing.JButton();
+        Equipo3Panel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -54,10 +73,10 @@ public class PrePartida extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Equipo1Panel.setLayout(new java.awt.GridLayout(1, 0));
-        jPanel1.add(Equipo1Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 100, 70));
+        jPanel1.add(Equipo1Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 100, 70));
 
         Equipo2Panel.setLayout(new java.awt.GridLayout(1, 0));
-        jPanel1.add(Equipo2Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 100, 70));
+        jPanel1.add(Equipo2Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 100, 70));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -66,12 +85,13 @@ public class PrePartida extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Equipo 2");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 60, -1));
+        jLabel2.setText("Equipo 3");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 60, -1));
 
         Titulo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo.setText("Seleccionar Equipos");
-        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         AceptarBtn.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         AceptarBtn.setText("Aceptar");
@@ -80,7 +100,7 @@ public class PrePartida extends javax.swing.JFrame {
                 AceptarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(AceptarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+        jPanel1.add(AceptarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
         CancelarBtn.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         CancelarBtn.setText("Cancelar");
@@ -89,13 +109,21 @@ public class PrePartida extends javax.swing.JFrame {
                 CancelarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(CancelarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, -1));
+        jPanel1.add(CancelarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
+
+        Equipo3Panel.setLayout(new java.awt.GridLayout());
+        jPanel1.add(Equipo3Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 100, 70));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Equipo 2");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 60, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,8 +138,10 @@ public class PrePartida extends javax.swing.JFrame {
             setEquipos();
             ConfiguracionPartida.setEquipo1(equipo1);
             ConfiguracionPartida.setEquipo2(equipo2);
+            if(ConfiguracionPartida.getCantjugadores()==6)
+                ConfiguracionPartida.setEquipo3(equipo3);
             try{
-            config.setColoresEquipos(equipo1, equipo2);
+            config.setColoresEquipos(equipo1, equipo2, equipo3);
             }catch(IOException e){
                 
             }
@@ -133,9 +163,11 @@ public class PrePartida extends javax.swing.JFrame {
     private javax.swing.JButton CancelarBtn;
     private javax.swing.JPanel Equipo1Panel;
     private javax.swing.JPanel Equipo2Panel;
+    private javax.swing.JPanel Equipo3Panel;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
@@ -144,12 +176,16 @@ public class PrePartida extends javax.swing.JFrame {
     private void GenerarComboBox(int cantidadcombobox, JPanel panel, int equipo) throws IOException{
         if(cantidadcombobox>=4){
         panel.setLayout(new GridLayout(cantidadcombobox/2, 1));
-        
+        int cantidadusersdivided;
+        if(cantidadcombobox==6){
+            cantidadusersdivided=3;
+        }else
+            cantidadusersdivided=2;
         if(adminusers.getTodosUsuarios()!=null){
             ArrayList<String> usuarios = adminusers.getTodosUsuarios();
-            for (int i = 0; i < cantidadcombobox/2; i++) {
+            for (int i = 0; i < cantidadcombobox/cantidadusersdivided; i++) {
                 JComboBox<String> combobox = new JComboBox<>();
-                if(i!=0 || (i==0 && equipo==2)){
+                if(i!=0 || (i==0 && equipo==2 || equipo==3)){
                     for(int i2=0; i2<usuarios.size();i2++){
                         if(!usuarios.get(i2).equals(adminusers.getUserlog()))
                             combobox.addItem(usuarios.get(i2));
@@ -193,11 +229,23 @@ public class PrePartida extends javax.swing.JFrame {
     }
     
     private void setEquipos(){
-        for(int i=0; i<usuariospartida.size()/2;i++){
-            equipo1.add(usuariospartida.get(i));
-        }
-        for(int i=usuariospartida.size()/2;i<usuariospartida.size();i++){
-            equipo2.add(usuariospartida.get(i));
+        if(ConfiguracionPartida.getCantjugadores()!=6){
+            for(int i=0; i<usuariospartida.size()/2;i++){
+                equipo1.add(usuariospartida.get(i));
+            }
+            for(int i=usuariospartida.size()/2;i<usuariospartida.size();i++){
+                equipo2.add(usuariospartida.get(i));
+            }
+        } else{
+            for(int i=0; i<2;i++){
+                equipo1.add(usuariospartida.get(i));
+            }
+            for(int i=2;i<4;i++){
+                equipo2.add(usuariospartida.get(i));
+            }
+            for(int i=4;i<6;i++){
+                equipo3.add(usuariospartida.get(i));
+            }
         }
     }
 }

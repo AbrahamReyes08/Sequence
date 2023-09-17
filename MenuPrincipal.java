@@ -100,13 +100,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         if(useradmin.getTodosUsuarios().size()>=ConfiguracionPartida.getCantjugadores()){
         if(ConfiguracionPartida.getCantjugadores()<4){
             ArrayList<String> equipo2 = new ArrayList();
+            ArrayList<String> equipo3 = new ArrayList();
             for(int i=0; i<ConfiguracionPartida.getCantjugadores()-1;i++){
                 String player = JOptionPane.showInputDialog(null, "Ingrese el nombre de usuario de su contrincante", "Contrincante", JOptionPane.INFORMATION_MESSAGE);
                 if(player!=null){
                     if(!player.equals("")){
                         try{
                             if(useradmin.BuscarUser(player)!=-1 && !player.equals(useradmin.getUserlog())){
-                                equipo2.add(player);
+                                if(ConfiguracionPartida.getCantjugadores()==2 || (ConfiguracionPartida.getCantjugadores()==3 && equipo2.isEmpty()))
+                                    equipo2.add(player);
+                                else
+                                    equipo3.add(player);
                             } else{
                                 JOptionPane.showMessageDialog(null, "Por favor ingrese un usuario valido", "Error", JOptionPane.ERROR_MESSAGE);
                                 equipo2.clear();
@@ -121,13 +125,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     }
                 }
             }
-            if(!equipo2.isEmpty()){
-                if((ConfiguracionPartida.getCantjugadores()==2) || ((ConfiguracionPartida.getCantjugadores()==3 && equipo2.size()==2) && (!equipo2.get(0).equals(equipo2.get(1))))){
+            if((ConfiguracionPartida.getCantjugadores()==2 && !equipo2.isEmpty()) || (ConfiguracionPartida.getCantjugadores()==3 && !equipo2.isEmpty() && !equipo3.isEmpty())){
+                if((ConfiguracionPartida.getCantjugadores()==2) || (ConfiguracionPartida.getCantjugadores()==3 && (!equipo2.get(0).equals(equipo3.get(0))))){
                     ConfiguracionPartida.setEquipo2(equipo2);
+                    ConfiguracionPartida.setEquipo3(equipo3);
                     ArrayList<String> equipo1 = new ArrayList();
                     equipo1.add(useradmin.getUserlog());
                     ConfiguracionPartida.setEquipo1(equipo1);
-                    config.setColoresEquipos(equipo1, equipo2);
+                    config.setColoresEquipos(equipo1, equipo2, equipo3);
                     AdminPantallas.AbrirSequence();
                     this.dispose();
                 } else{

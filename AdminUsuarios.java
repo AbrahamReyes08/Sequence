@@ -218,20 +218,22 @@ public class AdminUsuarios{
         return datos;
     }
     
-    public void AgregarLog(ArrayList<String> equipo1, ArrayList<String> equipo2, String resultado, Calendar fecha){
+    public void AgregarLog(ArrayList<String> equipo1, ArrayList<String> equipo2, ArrayList<String> equipo3, String resultado, Calendar fecha){
         try {
             RandomAccessFile logs = new RandomAccessFile(DirUsuario(equipo1.get(0))+"/logs.ur","rw");
             if(logs.length()!=0){
                 logs.seek(logs.length());
             }
-            String equipo1txt, equipo2txt;
+            String equipo1txt, equipo2txt, equipo3txt, equipos;
             
-            if(equipo2.size()>=2 && ConfiguracionPartida.getCantjugadores()>=4){
+            if(equipo2.size()>=2){
                 equipo1txt="Equipo de ";
                 equipo2txt="Equipo de ";
+                equipo3txt="Equipo de ";
             }else{
                 equipo1txt="Jugador ";
                 equipo2txt="Jugador ";
+                equipo3txt="Jugador ";
             }
                 
             for(int i=0; i<equipo1.size();i++){
@@ -247,15 +249,28 @@ public class AdminUsuarios{
                 if(i<equipo2.size()-2)
                     equipo2txt+=equipo2.get(i)+", ";
                 else if(i==equipo2.size()-2){
-                    if(equipo1.size()==1 && equipo2.size()==2){
-                        equipo2txt+=equipo2.get(i)+" y Jugador ";
-                    }else
-                        equipo2txt+=equipo2.get(i)+" y ";
+                    equipo2txt+=equipo2.get(i)+" y ";
                 }
                 else
                     equipo2txt+=equipo2.get(i);
             }
-            String log = fecha+" - "+equipo1txt+" vs "+equipo2txt+" - "+resultado;
+            
+            if(equipo3!=null){
+                for(int i=0; i<equipo3.size();i++){
+                    if(i<equipo3.size()-2)
+                        equipo3txt+=equipo3.get(i)+", ";
+                    else if(i==equipo3.size()-2){
+                        equipo3txt+=equipo3.get(i)+" y ";
+                    }
+                    else
+                        equipo3txt+=equipo3.get(i);
+                }
+            }
+            if(equipo3!=null){
+                equipos=equipo2txt+" y "+equipo3txt;
+            }else
+                equipos=equipo2txt;
+            String log = fecha+" - "+equipo1txt+" vs "+equipos+" - "+resultado;
             logs.writeUTF(log);
         } catch (Exception ex) {
             
