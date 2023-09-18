@@ -151,7 +151,6 @@ public class Tablero extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton101 = new javax.swing.JButton();
         instrucOrdenar = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         secuenciaComp = new javax.swing.JLabel();
         secCarta2 = new javax.swing.JLabel();
         secCarta3 = new javax.swing.JLabel();
@@ -161,6 +160,8 @@ public class Tablero extends javax.swing.JFrame {
         turnoEquipo = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        ColorFicha = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -544,7 +545,7 @@ public class Tablero extends javax.swing.JFrame {
 
         NombreMazoTurno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NombreMazoTurno.setText("Mazo Jugador 1");
-        getContentPane().add(NombreMazoTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, 190, -1));
+        getContentPane().add(NombreMazoTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 110, -1));
 
         tiempoLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         tiempoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -585,7 +586,7 @@ public class Tablero extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Carta Utilizada");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 150, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 150, -1));
 
         jButton101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/orden.png"))); // NOI18N
         jButton101.setBorderPainted(false);
@@ -597,7 +598,6 @@ public class Tablero extends javax.swing.JFrame {
         instrucOrdenar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         instrucOrdenar.setText("<html> Para dejar de ordenar las cartas y volver a jugar oprima de nuevo el boton de ordenar <html>");
         getContentPane().add(instrucOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 360, 260, -1));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 630, 40, 40));
 
         secuenciaComp.setText("Todavia no se ha completado ninguna secuencia");
         getContentPane().add(secuenciaComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 330, -1));
@@ -627,6 +627,10 @@ public class Tablero extends javax.swing.JFrame {
 
         jLabel11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Ultima Secuencia Completada", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 380, 100));
+        getContentPane().add(ColorFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 200, 60, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/fondo.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -649,6 +653,7 @@ public class Tablero extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel CardUsed;
+    public static javax.swing.JLabel ColorFicha;
     public static javax.swing.JButton Mazo;
     private javax.swing.JPanel Mazo2;
     public static javax.swing.JLabel NombreMazoTurno;

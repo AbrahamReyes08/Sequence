@@ -145,7 +145,8 @@ public class Sequence implements ActionListener{
         iniciarCronometro();
         CU.add("AsCorazones");
         Tablero.instrucDiscart.setVisible(false);
-        Tablero.instrucOrdenar.setVisible(false);     
+        Tablero.instrucOrdenar.setVisible(false);   
+        Tablero.ColorFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+colorJug1+".png")));
     }
     
     private void añadirActionEvents() {
@@ -994,7 +995,6 @@ public class Sequence implements ActionListener{
         yaNoHayCartas();
         comprobarGane();
         comprobarEmpate();
-        cambiarTurnoEquipo();
         if(turno.equals(Jugador1)){
             CambiarMazoEnPantalla(mazo2);
             if (cantidadDeEquipos==2) {
@@ -1128,7 +1128,8 @@ public class Sequence implements ActionListener{
                     Tablero.cartaSelec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/parteTrasera.png")));
                     
         }
-        
+        cambiarTurnoEquipo();
+        ponerColorDeFicha();
         ocultarCartasDisponible();    
     }
     
@@ -1732,6 +1733,14 @@ public class Sequence implements ActionListener{
             colorJug7=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(1, 3), 1);
             colorJug8=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(2, 3), 2);
         }
+        System.out.println(colorJug1);
+        System.out.println(colorJug2);
+        System.out.println(colorJug3);
+        System.out.println(colorJug4);
+        System.out.println(colorJug5);
+        System.out.println(colorJug6);
+        System.out.println(colorJug7);
+        System.out.println(colorJug8);
     }
     
     private void establecerCantEquipos() {
@@ -2372,7 +2381,7 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
     }
     
     private void ponerSecuenciaEnPantallaV(int i, int s) {
-                    Tablero.secuenciaComp.setText("El equipo de "+turno+"ha completado la siguiente secuencia");
+                    Tablero.secuenciaComp.setText("El equipo de "+turno+" ha completado la siguiente secuencia");
                     if (tablero[i][s].equals("Esquinas")) {
                         Tablero.secCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s]+".png")));
                     } else {
@@ -2389,7 +2398,7 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
     }
     
     private void ponerSecuenciaEnPantallaDArriba(int i, int s) {
-                    Tablero.secuenciaComp.setText("El equipo de "+turno+"ha completado la siguiente secuencia");
+                    Tablero.secuenciaComp.setText("El equipo de "+turno+" ha completado la siguiente secuencia");
                     if (tablero[i][s].equals("Esquinas")) {
                         Tablero.secCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s]+".png")));
                     } else {
@@ -2406,7 +2415,7 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
     }
     
     private void ponerSecuenciaEnPantallaDAbajo(int i, int s) {
-                    Tablero.secuenciaComp.setText("El equipo de "+turno+"ha completado la siguiente secuencia");
+                    Tablero.secuenciaComp.setText("El equipo de "+turno+" ha completado la siguiente secuencia");
                     if (tablero[i][s].equals("Esquinas")) {
                         Tablero.secCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s]+".png")));
                     } else {
@@ -2470,5 +2479,25 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
         System.out.println(num);
 
         
+    }
+    
+    private void ponerColorDeFicha() {
+        if (turno.equals(Jugador1)) {
+                 Tablero.ColorFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+colorJug1+".png")));
+        } else if (turno.equals(Jugador2)) {
+                 Tablero.ColorFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+colorJug2+".png")));
+        } else if (turno.equals(Jugador3)) {
+                 Tablero.ColorFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+colorJug3+".png")));
+        } else if (turno.equals(Jugador4)) {
+                 Tablero.ColorFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+colorJug4+".png")));
+        } else if (turno.equals(Jugador5)) {
+                 Tablero.ColorFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+colorJug5+".png")));
+        } else if (turno.equals(Jugador6)) {
+                 Tablero.ColorFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+colorJug6+".png")));
+        } else if (turno.equals(Jugador7)) {
+                 Tablero.ColorFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+colorJug7+".png")));
+        } else if (turno.equals(Jugador8)) {
+                 Tablero.ColorFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+colorJug8+".png")));
+        }
     }
 }

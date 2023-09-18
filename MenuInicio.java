@@ -55,6 +55,8 @@ public class MenuInicio extends javax.swing.JFrame {
             }
         });
         jPanel1.add(SalirBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 90, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/fondo.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

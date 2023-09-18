@@ -85,6 +85,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         jPanel1.add(RegresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 100, 30));
 
         Fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/fondo.png"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

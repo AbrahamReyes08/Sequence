@@ -9,15 +9,18 @@ public class Reportes extends javax.swing.JFrame {
     
     public Reportes() throws IOException {
         initComponents();
-        if(useradmin.getLogs(useradmin.getUserlog())!=null){
-            String texto="Fecha  -  Tu Equipo  -  Equipo contrario  -  Resultado\n";
+        setLocationRelativeTo(null);
+        if (useradmin.getLogs(useradmin.getUserlog()) != null) {
+            StringBuilder htmlText = new StringBuilder("Fecha  -  Tu Equipo  -  Equipo contrario  -  Resultado\n");
             ArrayList<String> registros = useradmin.getLogs(useradmin.getUserlog());
-            for(int i=0; i<registros.size();i++){
-                texto+=registros.get(i)+"\n";
+            for (int i = 0; i < registros.size(); i++) {
+                htmlText.append(registros.get(i));
             }
-            RegistrosTxT.setText(texto);
-        } else
-            RegistrosTxT.setText("Aun no hay registros de partidas jugadas");
+            RegistroLogs.setText(htmlText.toString());
+        } else {
+            RegistroLogs.setText("Aun no hay registros de partidas jugadas");
+        }
+
     }
 
     @SuppressWarnings("unchecked")
@@ -25,19 +28,16 @@ public class Reportes extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        RegistrosTxT = new javax.swing.JTextField();
         Titulo = new javax.swing.JLabel();
         RegresarBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        RegistroLogs = new javax.swing.JTextArea();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        RegistrosTxT.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        RegistrosTxT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(RegistrosTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 410, 320));
 
         Titulo.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Titulo.setText("Registros de Partidas");
@@ -52,7 +52,14 @@ public class Reportes extends javax.swing.JFrame {
         });
         jPanel1.add(RegresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, -1));
 
+        RegistroLogs.setColumns(20);
+        RegistroLogs.setRows(5);
+        jScrollPane1.setViewportView(RegistroLogs);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 480, 340));
+
         Fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/fondo.png"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -76,9 +83,10 @@ public class Reportes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
-    private javax.swing.JTextField RegistrosTxT;
+    public static javax.swing.JTextArea RegistroLogs;
     private javax.swing.JButton RegresarBtn;
     private javax.swing.JLabel Titulo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

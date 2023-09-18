@@ -25,6 +25,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         Username = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         ContraseñaTxT = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -66,6 +67,9 @@ public class IniciarSesion extends javax.swing.JFrame {
         ContraseñaTxT.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         ContraseñaTxT.setText("Contraseña");
         jPanel1.add(ContraseñaTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/fondo.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -4, 510, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,6 +135,7 @@ public class IniciarSesion extends javax.swing.JFrame {
     private javax.swing.JTextField Username;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

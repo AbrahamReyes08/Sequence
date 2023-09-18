@@ -18,7 +18,7 @@ public class ConfiguracionPartida{
     static Color celeste = new Color(92,225,230);
     static Color verde = new Color(193,255,114);
     static Color rojo = new Color(255,87,87);
-    static Color naranja = new Color(255,145,77);
+    static Color Anaranjado = new Color(255,145,77);
     static Color morado = new Color(203,108,230);
     static Color azul = new Color(84,106,221);
     static Color amarillo = new Color(225,222,89);
@@ -238,7 +238,7 @@ public class ConfiguracionPartida{
             return "Verde";
         else if(color.equals(rojo))
             return "Rojo";
-        else if(color.equals(naranja))
+        else if(color.equals(Anaranjado))
             return "Anaranjado";
         else if(color.equals(morado))
             return "Morado";
