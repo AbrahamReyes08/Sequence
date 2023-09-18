@@ -220,58 +220,64 @@ public class AdminUsuarios{
     
     public void AgregarLog(ArrayList<String> equipo1, ArrayList<String> equipo2, ArrayList<String> equipo3, String resultado, Calendar fecha){
         try {
-            RandomAccessFile logs = new RandomAccessFile(DirUsuario(equipo1.get(0))+"/logs.ur","rw");
-            if(logs.length()!=0){
-                logs.seek(logs.length());
-            }
-            String equipo1txt, equipo2txt, equipo3txt, equipos;
-            
-            if(equipo2.size()>=2){
-                equipo1txt="Equipo de ";
-                equipo2txt="Equipo de ";
-                equipo3txt="Equipo de ";
-            }else{
-                equipo1txt="Jugador ";
-                equipo2txt="Jugador ";
-                equipo3txt="Jugador ";
-            }
-                
-            for(int i=0; i<equipo1.size();i++){
-                if(i<equipo1.size()-2)
-                    equipo1txt+=equipo1.get(i)+", ";
-                else if(i==equipo1.size()-2)
-                    equipo1txt+=equipo1.get(i)+" y ";
-                else
-                    equipo1txt+=equipo1.get(i);
-            }
-            
-            for(int i=0; i<equipo2.size();i++){
-                if(i<equipo2.size()-2)
-                    equipo2txt+=equipo2.get(i)+", ";
-                else if(i==equipo2.size()-2){
-                    equipo2txt+=equipo2.get(i)+" y ";
+            for(int indice=0; indice<equipo1.size();indice++){
+                if(resultado.equals("Victoria")){
+                    SumarPuntos(equipo1.get(indice));
                 }
-                else
-                    equipo2txt+=equipo2.get(i);
-            }
-            
-            if(equipo3!=null){
-                for(int i=0; i<equipo3.size();i++){
-                    if(i<equipo3.size()-2)
-                        equipo3txt+=equipo3.get(i)+", ";
-                    else if(i==equipo3.size()-2){
-                        equipo3txt+=equipo3.get(i)+" y ";
+                RandomAccessFile logs = new RandomAccessFile(DirUsuario(equipo1.get(indice))+"/logs.ur","rw");
+                if(logs.length()!=0){
+                    logs.seek(logs.length());
+                }
+                String equipo1txt, equipo2txt, equipo3txt, equipos;
+
+                if(equipo2.size()>=2){
+                    equipo1txt="Equipo de ";
+                    equipo2txt="Equipo de ";
+                    equipo3txt="Equipo de ";
+                }else{
+                    equipo1txt="Jugador ";
+                    equipo2txt="Jugador ";
+                    equipo3txt="Jugador ";
+                }
+
+                for(int i=0; i<equipo1.size();i++){
+                    if(i<equipo1.size()-2)
+                        equipo1txt+=equipo1.get(i)+", ";
+                    else if(i==equipo1.size()-2)
+                        equipo1txt+=equipo1.get(i)+" y ";
+                    else
+                        equipo1txt+=equipo1.get(i);
+                }
+
+                for(int i=0; i<equipo2.size();i++){
+                    if(i<equipo2.size()-2)
+                        equipo2txt+=equipo2.get(i)+", ";
+                    else if(i==equipo2.size()-2){
+                        equipo2txt+=equipo2.get(i)+" y ";
                     }
                     else
-                        equipo3txt+=equipo3.get(i);
+                        equipo2txt+=equipo2.get(i);
                 }
+
+                if(equipo3!=null){
+                    for(int i=0; i<equipo3.size();i++){
+                        if(i<equipo3.size()-2)
+                            equipo3txt+=equipo3.get(i)+", ";
+                        else if(i==equipo3.size()-2){
+                            equipo3txt+=equipo3.get(i)+" y ";
+                        }
+                        else
+                            equipo3txt+=equipo3.get(i);
+                    }
+                }
+                if(equipo3!=null){
+                    equipos=equipo2txt+" y "+equipo3txt;
+                }else
+                    equipos=equipo2txt;
+                String log = fecha+" - "+equipo1txt+" vs "+equipos+" - "+resultado;
+                logs.writeUTF(log);
             }
-            if(equipo3!=null){
-                equipos=equipo2txt+" y "+equipo3txt;
-            }else
-                equipos=equipo2txt;
-            String log = fecha+" - "+equipo1txt+" vs "+equipos+" - "+resultado;
-            logs.writeUTF(log);
+            
         } catch (Exception ex) {
             
         }
@@ -292,5 +298,26 @@ public class AdminUsuarios{
             
         }
         return null;
+    }
+    
+    private void SumarPuntos(String username)throws IOException{
+        if(BuscarUser(username)!=-1){
+            usuarios.seek(BuscarUser(username));
+            usuarios.readUTF();
+            usuarios.readUTF();
+            int puntosactuales=getPuntosUsuario(username);
+            puntosactuales+=3;
+            usuarios.writeInt(puntosactuales);
+        }
+    }
+    
+    public int getPuntosUsuario(String username) throws IOException{
+       if(BuscarUser(username)!=-1){
+            usuarios.seek(BuscarUser(username));
+            usuarios.readUTF();
+            usuarios.readUTF();
+            return usuarios.readInt();
+        } 
+       return -1;
     }
 }

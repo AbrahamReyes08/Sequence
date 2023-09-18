@@ -4,12 +4,14 @@
  */
 package sequence;
 
+import java.io.IOException;
+
 /**
  *
  * @author dell
  */
 public class NewClass {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Sequence sq=new Sequence();
     }
 }

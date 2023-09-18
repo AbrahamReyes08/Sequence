@@ -40,7 +40,11 @@ public class AdminPantallas {
     }
     
     public static void AbrirSequence(){
+        try{
         Sequence sequence = new Sequence();
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null, "Vaya parece que esto no debía pasar", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     public static void AbrirConfiguracion(){

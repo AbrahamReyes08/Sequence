@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import java.io.IOException;
+import java.util.Calendar;
 
 /**
  *
@@ -140,7 +141,7 @@ public class Sequence implements ActionListener{
         } 
         CambiarMazoEnPantalla(mazo1);
         iniciarCronometro();
-        CU.add("parteTrasera");
+        CU.add("AsCorazones");
         Tablero.instrucDiscart.setVisible(false);
         Tablero.instrucOrdenar.setVisible(false);     
     }
@@ -805,29 +806,79 @@ public class Sequence implements ActionListener{
         
         String word = Character.toString(letra1) + Character.toString(letra2) + Character.toString(letra3);
             if(word.equals("JO1")){
-                if(turno.equals(Jugador1) && tablero[y][x].charAt(1)=='1') {
-                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia.\nIntenta con otra.");
+                if(cantidadDeJugadores==6 || cantidadDeJugadores==3) {
+                    if(turno.equals(Jugador1) && (tablero[y][x].charAt(1)=='1' || tablero[y][x].charAt(1)=='4')) {
+                       JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
+                        return false;
+                    }
+                } else if (cantidadDeJugadores!=6 || cantidadDeJugadores!=3) {
+                    if(turno.equals(Jugador1) && (tablero[y][x].charAt(1)=='1' || tablero[y][x].charAt(1)=='3' || tablero[y][x].charAt(1)=='5' 
+                            || tablero[y][x].charAt(1)=='7')) {
+                       JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
+                        return false;
+                    }
+                }else if(cantidadDeJugadores==6 || cantidadDeJugadores==3) {
+                    if(turno.equals(Jugador2) && (tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='5' )) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
-                } else if(turno.equals(Jugador2) && tablero[y][x].charAt(1)=='2') {
-                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia.\nIntenta con otra.");
+                    }
+                } else if (cantidadDeJugadores!=6 || cantidadDeJugadores!=3) {
+                    if(turno.equals(Jugador2) && (tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='4' || tablero[y][x].charAt(1)=='6'
+                            || tablero[y][x].charAt(1)=='8' )) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
-                } else if(turno.equals(Jugador3) && tablero[y][x].charAt(1)=='3') {
-                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia.\nIntenta con otra.");
+                    }
+                }else if (cantidadDeJugadores==6 || cantidadDeJugadores==3) {
+                    if(turno.equals(Jugador3) && (tablero[y][x].charAt(1)=='3' || tablero[y][x].charAt(1)=='6')) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
-                } else if(turno.equals(Jugador4) && tablero[y][x].charAt(1)=='4') {
-                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia.\nIntenta con otra.");
+                    }
+                } else if (cantidadDeJugadores!=6 || cantidadDeJugadores!=3) {
+                    if(turno.equals(Jugador3) && (tablero[y][x].charAt(1)=='3' || tablero[y][x].charAt(1)=='1' || tablero[y][x].charAt(1)=='5' 
+                            || tablero[y][x].charAt(1)=='7')) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
-                } else if(turno.equals(Jugador5) && tablero[y][x].charAt(1)=='5') {
-                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia.\nIntenta con otra.");
+                    }
+                }else if(cantidadDeJugadores==6) {
+                    if(turno.equals(Jugador4) && (tablero[y][x].charAt(1)=='4' || tablero[y][x].charAt(1)=='1')) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
-                } else if(turno.equals(Jugador6) && tablero[y][x].charAt(1)=='6') {
-                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia.\nIntenta con otra.");
+                    }                    
+                } else if(cantidadDeJugadores!=6) {
+                    if(turno.equals(Jugador4) && (tablero[y][x].charAt(1)=='4' || tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='6' 
+                            || tablero[y][x].charAt(1)=='8' )) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
-                } else if(turno.equals(Jugador7) && tablero[y][x].charAt(1)=='7') {
-                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia.\nIntenta con otra.");
+                    }    
+                } else if(cantidadDeJugadores==6) {
+                    if(turno.equals(Jugador5) && (tablero[y][x].charAt(1)=='5' || tablero[y][x].charAt(1)=='2')) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo .\nIntenta con otra.");
                     return false;
-                } else if(turno.equals(Jugador8) && tablero[y][x].charAt(1)=='8') {
-                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia.\nIntenta con otra.");
+                    }                     
+                } else if (cantidadDeJugadores!=6) {
+                    if(turno.equals(Jugador5) && (tablero[y][x].charAt(1)=='5' || tablero[y][x].charAt(1)=='1' || tablero[y][x].charAt(1)=='3'
+                            || tablero[y][x].charAt(1)=='7')) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
+                    return false;
+                    }     
+                }else if (cantidadDeJugadores==6) {
+                    if(turno.equals(Jugador6) && (tablero[y][x].charAt(1)=='6' || tablero[y][x].charAt(1)=='3' )) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
+                    return false;
+                    }
+                } else if(cantidadDeJugadores!=6) {
+                    if(turno.equals(Jugador6) && (tablero[y][x].charAt(1)=='6' || tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='4'
+                            || tablero[y][x].charAt(1)=='8' ) ) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo\nIntenta con otra.");
+                    return false;
+                    }
+                } else if(turno.equals(Jugador7) && (tablero[y][x].charAt(1)=='7' || tablero[y][x].charAt(1)=='5' || tablero[y][x].charAt(1)=='3' 
+                        || tablero[y][x].charAt(1)=='1' )) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
+                    return false;
+                } else if(turno.equals(Jugador8) && (tablero[y][x].charAt(1)=='8' || tablero[y][x].charAt(1)=='6' || tablero[y][x].charAt(1)=='4'
+                        || tablero[y][x].charAt(1)=='2'  )) {
+                   JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
                 }
                 
@@ -875,7 +926,9 @@ public class Sequence implements ActionListener{
             x=x-1;
             y=0;
         }
+        yaNoHayCartas();
         int index = random.nextInt(CM.size());
+        yaNoHayCartas();
         nombreMazo.remove(deck[y][x]);
         nombreMazo.add(CM.get(index));
         deck[y][x].equals(CM.get(index));
@@ -893,6 +946,7 @@ public class Sequence implements ActionListener{
             x=x-1;
             y=0;
         }
+        yaNoHayCartas();
         int index = random.nextInt(CM.size());
         boolean seguardo=false;
         for (int i=0; i<tablero.length; i++) {
@@ -905,6 +959,7 @@ public class Sequence implements ActionListener{
         }
         for (int i=0; i<nombreMazo.size(); i++) {
             if (nombreMazo.get(i).equals(deck[y][x])) {
+                yaNoHayCartas();
                 nombreMazo.set(i, CM.get(index));
             }
         }
@@ -919,7 +974,9 @@ public class Sequence implements ActionListener{
     }
     
     private void cambiarTurno(){
+        yaNoHayCartas();
         comprobarGane();
+        comprobarEmpate();
         cambiarTurnoEquipo();
         if(turno.equals(Jugador1)){
             CambiarMazoEnPantalla(mazo2);
@@ -1737,21 +1794,21 @@ public class Sequence implements ActionListener{
     }
     
     private void yaNoHayCartas() {
-        if (CM.isEmpty()) {
+        if (CM.size()==0) {
+            System.out.println("no hay cartas");
             for(int i=0; i<CU.size(); i++) {
                 if(!CU.isEmpty()) {
+                    System.out.println("entro ------------------------------------");
                     CM.add(CU.get(i));
                 } 
                 CM.add(CU.get(i));
-                if (!CD.isEmpty()) {
-                    CM.add(CU.get(i));
-                }
-            }
-            CU.clear();
-            if (CM.isEmpty()) {
-                fichasMazo();
             }
         }
+        for (int i=0; i<CM.size();i++) {
+            CM.get(i);
+            
+        }
+        System.out.println("-*-*---*5-*5*-5-*5-5-*5*5");
     }
     
     private void ordenarCartas(String posAntigua, String posNueva) {
@@ -2212,41 +2269,76 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
     }
 }
     
+    private void setLogs(ArrayList<String> equipo1, ArrayList<String> equipo2, ArrayList<String> equipo3, int equipoganador){
+        Calendar fecha = Calendar.getInstance();
+        String resulte1="", resulte2="", resulte3="";
+        switch(equipoganador){
+            case 0:
+                resulte1="Empate";
+                resulte2="Empate";
+                resulte3="Empate";
+                break;
+            case 1:
+                resulte1="Victoria";
+                resulte2="Derrota";
+                resulte3="Derrota";
+                break;
+            case 2:
+                resulte2="Victoria";
+                resulte1="Derrota";
+                resulte3="Derrota";
+                break;
+            case 3:
+                resulte3="Victoria";
+                resulte2="Derrota";
+                resulte1="Derrota";
+                break;
+        }
+        if(cantidadDeEquipos==2){
+            admin.AgregarLog(equipo1, equipo2, null, resulte1, fecha);
+            admin.AgregarLog(equipo2, equipo1, null, resulte2, fecha);
+        }else{
+            admin.AgregarLog(equipo1, equipo2, equipo3, resulte1, fecha);
+            admin.AgregarLog(equipo2, equipo1, equipo3, resulte2, fecha);
+            admin.AgregarLog(equipo3, equipo2, equipo1, resulte3, fecha);
+        }
+    }
+
     private void comprobarGane() {
-        if (cantidadDeEquipos==3) {
+        if (cantidadDeJugadores==3 || cantidadDeJugadores==6) {
             if (secEquipo1==2) {
                 JOptionPane.showMessageDialog(null, "Ha ganada el equipo 1 al completar dos secuencias");
-                admin.AgregarLog(mazo1, mazo2, mazo3, turno, fecha);
+                setLogs(ConfiguracionPartida.getEquipo1(), ConfiguracionPartida.getEquipo2(), ConfiguracionPartida.getEquipo3(), 1);
                 AdminPantallas.AbrirMenuPrincipal();
                 tab.dispose();
             }
             if (secEquipo2==2) {
                 JOptionPane.showMessageDialog(null, "Ha ganada el equipo 2 al completar dos secuencias");
-                admin.AgregarLog(mazo1, mazo2, mazo3, turno, fecha);
+                setLogs(ConfiguracionPartida.getEquipo1(), ConfiguracionPartida.getEquipo2(), ConfiguracionPartida.getEquipo3(), 2);
                 AdminPantallas.AbrirMenuPrincipal();
                 tab.dispose();
             }
             if (secEquipo3==2) {
                 JOptionPane.showMessageDialog(null, "Ha ganada el equipo 3 al completar dos secuencias");
-                admin.AgregarLog(mazo1, mazo2, mazo3, turno, fecha);
+                setLogs(ConfiguracionPartida.getEquipo1(), ConfiguracionPartida.getEquipo2(), ConfiguracionPartida.getEquipo3(), 3);
                 AdminPantallas.AbrirMenuPrincipal();
                 tab.dispose();
             }
-        }
-        if (cantidadDeEquipos==2) {
-            if (secEquipo1==2) {
+        } else {
+         if (secEquipo1==2) {
                 JOptionPane.showMessageDialog(null, "Ha ganada el equipo 1 al completar dos secuencias");
-                admin.AgregarLog(mazo1, mazo2, mazo3, turno, fecha);
+                setLogs(ConfiguracionPartida.getEquipo1(), ConfiguracionPartida.getEquipo2(), null, 1);
                 AdminPantallas.AbrirMenuPrincipal();
                 tab.dispose();
             }
             if (secEquipo2==2) {
                 JOptionPane.showMessageDialog(null, "Ha ganada el equipo 2 al completar dos secuencias");
-                admin.AgregarLog(mazo1, mazo2, mazo3, turno, fecha);
+                setLogs(ConfiguracionPartida.getEquipo1(), ConfiguracionPartida.getEquipo2(), null, 2);
                 AdminPantallas.AbrirMenuPrincipal();
                 tab.dispose();
-            }
+            }   
         }
+
     }
     
     private void ponerSecuenciaEnPantallaH(int i, int s) {
@@ -2265,6 +2357,7 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
                         Tablero.secCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i][s+4].substring(3)+".png")));
                     }
     }
+    
     private void ponerSecuenciaEnPantallaV(int i, int s) {
                     Tablero.secuenciaComp.setText("El equipo de "+turno+"ha completado la siguiente secuencia");
                     if (tablero[i][s].equals("Esquinas")) {
@@ -2281,6 +2374,7 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
                         Tablero.secCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+4][s].substring(3)+".png")));
                     }
     }
+    
     private void ponerSecuenciaEnPantallaDArriba(int i, int s) {
                     Tablero.secuenciaComp.setText("El equipo de "+turno+"ha completado la siguiente secuencia");
                     if (tablero[i][s].equals("Esquinas")) {
@@ -2297,6 +2391,7 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
                     Tablero.secCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/"+tablero[i+4][s-4].substring(3)+".png")));
                     }
     }
+    
     private void ponerSecuenciaEnPantallaDAbajo(int i, int s) {
                     Tablero.secuenciaComp.setText("El equipo de "+turno+"ha completado la siguiente secuencia");
                     if (tablero[i][s].equals("Esquinas")) {
@@ -2315,7 +2410,7 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
     }
     
     private void cambiarTurnoEquipo() {
-        if (cantidadDeEquipos==2) {
+        if (cantidadDeEquipos!=3 || cantidadDeEquipos!=6) {
             if (turnoEquipo.equals("Equipo 1")) {
                 turnoEquipo="Equipo 2";
             } else {
@@ -2331,5 +2426,31 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
             }
         }
         Tablero.turnoEquipo.setText(turnoEquipo);
+    }
+    
+    private void comprobarEmpate() {
+        int num=0;
+        for (int i=0; i<tablero.length; i++) {
+            for (int z=0; z<tablero.length;z++) {
+                String pos=i+""+z;
+                if (!pos.equals("00") && !pos.equals("09") && !pos.equals("90") && !pos.equals("99") ) {
+                    if (tablero[i][z].substring(0, 3).equals("j1-")  || tablero[i][z].substring(0, 3).equals("j2-")
+                         || tablero[i][z].substring(0, 3).equals("j3-") || tablero[i][z].substring(0, 3).equals("j4-")
+                         || tablero[i][z].substring(0, 3).equals("j5-") || tablero[i][z].substring(0, 3).equals("j6-")
+                         || tablero[i][z].substring(0, 3).equals("j7-") || tablero[i][z].substring(0, 3).equals("j8-")) {
+                        num=num+1;
+                    }
+                   
+                    if (num==96) {
+                        JOptionPane.showMessageDialog(null, "La partida a terminado en empate, ya no hay posiciones disponibles");
+                            AdminPantallas.AbrirMenuPrincipal();
+                            tab.dispose();
+                    }
+                }
+            }
+        }
+        System.out.println(num);
+
+        
     }
 }
