@@ -18,6 +18,7 @@ public class Reportes extends javax.swing.JFrame {
             RegistrosTxT.setText(texto);
         } else
             RegistrosTxT.setText("Aun no hay registros de partidas jugadas");
+        PuntosTxT.setText("Mis puntos: "+useradmin.getPuntosUsuario(useradmin.getUserlog()));
     }
 
     @SuppressWarnings("unchecked")
@@ -28,6 +29,7 @@ public class Reportes extends javax.swing.JFrame {
         RegistrosTxT = new javax.swing.JTextField();
         Titulo = new javax.swing.JLabel();
         RegresarBtn = new javax.swing.JButton();
+        PuntosTxT = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -37,7 +39,7 @@ public class Reportes extends javax.swing.JFrame {
 
         RegistrosTxT.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         RegistrosTxT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(RegistrosTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 410, 320));
+        jPanel1.add(RegistrosTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 410, 290));
 
         Titulo.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Titulo.setText("Registros de Partidas");
@@ -51,6 +53,11 @@ public class Reportes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(RegresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, -1));
+
+        PuntosTxT.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        PuntosTxT.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        PuntosTxT.setText("Mis puntos:");
+        jPanel1.add(PuntosTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
         Fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
@@ -76,6 +83,7 @@ public class Reportes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel PuntosTxT;
     private javax.swing.JTextField RegistrosTxT;
     private javax.swing.JButton RegresarBtn;
     private javax.swing.JLabel Titulo;
