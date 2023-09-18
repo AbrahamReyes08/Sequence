@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 /**
@@ -2213,12 +2214,8 @@ public class Sequence implements ActionListener{
                 }
             }
         }
-        
-        System.out.println("-*-*-*-*-*-*-*");
-        System.out.println(secEquipo1);
-        System.out.println(secEquipo2);
-        System.out.println(secEquipo3);
-        System.out.println("-*-*-*-*-*-*-*-*-*");
+        comprobarGane();
+        comprobarEmpate();
     }
     
     private boolean verificarSecuencia(String ficha, int x, int y, int dx, int dy) {
@@ -2286,7 +2283,7 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
 }
     
     private void setLogs(ArrayList<String> equipo1, ArrayList<String> equipo2, ArrayList<String> equipo3, int equipoganador){
-        Calendar fecha = Calendar.getInstance();
+        LocalDate fecha=LocalDate.now();
         String resulte1="", resulte2="", resulte3="";
         switch(equipoganador){
             case 0:

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -218,7 +219,7 @@ public class AdminUsuarios{
         return datos;
     }
     
-    public void AgregarLog(ArrayList<String> equipo1, ArrayList<String> equipo2, ArrayList<String> equipo3, String resultado, Calendar fecha){
+    public void AgregarLog(ArrayList<String> equipo1, ArrayList<String> equipo2, ArrayList<String> equipo3, String resultado, LocalDate fecha){
         try {
             for(int indice=0; indice<equipo1.size();indice++){
                 if(resultado.equals("Victoria")){
