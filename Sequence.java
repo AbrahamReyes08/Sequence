@@ -50,7 +50,7 @@ public class Sequence implements ActionListener{
     private String posicionAntigua;
     private String posicionNueva;
     private boolean quiereDescartar=false;
-    private String turno="Jugador1";
+    private String turno;
     private int num=0;
     private int cartasRobadas=0;
     private String cartaAnterior="";
@@ -65,16 +65,16 @@ public class Sequence implements ActionListener{
     private String colorJug6;
     private String colorJug7;
     private String colorJug8;
-    private final String Jugador1="Jugador1";
-    private final String Jugador2="Jugador2";
-    private final String Jugador3="Jugador3";
-    private final String Jugador4="Jugador4";
-    private final String Jugador5="Jugador5";
-    private final String Jugador6="Jugador6";
-    private final String Jugador7="Jugador7";
-    private final String Jugador8="Jugador8";
+    private String Jugador1;
+    private String Jugador2;
+    private String Jugador3;
+    private String Jugador4;
+    private String Jugador5;
+    private String Jugador6;
+    private String Jugador7;
+    private String Jugador8;
     private boolean quiereOrdenar=false;
-    private int cantidadDeEquipos=2;
+    private int cantidadDeEquipos;
     private int secEquipo1=0;
     private int secEquipo2=0;
     private int secEquipo3=0;
@@ -90,6 +90,7 @@ public class Sequence implements ActionListener{
         añadirFichasTablero();
         Tablero.NombreMazoTurno.setText(turno);
         Tablero.turnoEquipo.setText(turnoEquipo);
+        turno=Jugador1;
     }
     
     private void inicializarTablero() {
@@ -106,6 +107,7 @@ public class Sequence implements ActionListener{
         ocultarCartasDisponible();
         fichasMazo();
         repartirColores();
+        repartirJugadores();
         if (cantidadDeJugadores==2) {
         asignarCartas(mazo1);
         asignarCartas(mazo2);
@@ -1626,14 +1628,81 @@ public class Sequence implements ActionListener{
     }
     
     private void repartirColores() {
-        colorJug1="rojo";
-        colorJug2="verde";
-        colorJug3="azul";
-        colorJug4="amarillo";
-        colorJug5="naranja";
-        colorJug6="morado";
-        colorJug7="negro";
-        colorJug8="celeste";
+        if (cantidadDeJugadores==2) {
+            colorJug1=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(1, 1), 1);
+            colorJug2=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(2, 1), 2);
+        } else if (cantidadDeJugadores==3) {
+            colorJug1=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(1, 1), 1);
+            colorJug2=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(2, 1), 2);
+            colorJug3=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(3, 1), 3);
+        } else if(cantidadDeJugadores==4) {
+            colorJug1=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(1, 1), 1);
+            colorJug2=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(2, 1), 2);
+            colorJug3=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(1, 2), 1);
+            colorJug4=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(2, 2), 2);
+        } else if(cantidadDeJugadores==6) {
+            Jugador1=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(1, 1), 1);
+            Jugador2=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(2, 1), 2);
+            Jugador3=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(3, 1), 3);
+            Jugador4=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(1, 2), 1);
+            Jugador5=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(2, 2), 2);
+            Jugador6=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(3, 2), 3);
+        } else if(cantidadDeJugadores==8) {
+            Jugador1=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(1, 1), 1);
+            Jugador2=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(2, 1), 2);
+            Jugador3=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(1, 2), 1);
+            Jugador4=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(2, 2), 2);
+            Jugador5=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(1, 3), 1);
+            Jugador6=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(2, 3), 2);
+            Jugador7=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(1, 4), 1);
+            Jugador8=ConfiguracionPartida.getColorPlayer(ConfiguracionPartida.getJugador(2, 4), 2);
+        }
+    }
+    
+    private void establecerCantEquipos() {
+        if (cantidadDeJugadores==2) {
+            cantidadDeEquipos=2;
+        } else if (cantidadDeJugadores==3) {
+            cantidadDeEquipos=3;
+        } else if(cantidadDeJugadores==4) {
+            cantidadDeEquipos=2;
+        } else if(cantidadDeJugadores==6) {
+            cantidadDeEquipos=3;
+        } else if(cantidadDeJugadores==8) {
+            cantidadDeEquipos=2;
+        }
+    }
+    
+    private void repartirJugadores() {
+        if (cantidadDeJugadores==2) {
+            Jugador1=ConfiguracionPartida.getJugador(1, 1);
+            Jugador2=ConfiguracionPartida.getJugador(2, 1);
+        } else if (cantidadDeJugadores==3) {
+            Jugador1=ConfiguracionPartida.getJugador(1, 1);
+            Jugador2=ConfiguracionPartida.getJugador(2, 1);
+            Jugador3=ConfiguracionPartida.getJugador(3, 1);
+        } else if(cantidadDeJugadores==4) {
+            Jugador1=ConfiguracionPartida.getJugador(1, 1);
+            Jugador2=ConfiguracionPartida.getJugador(2, 1);
+            Jugador3=ConfiguracionPartida.getJugador(1, 2);
+            Jugador4=ConfiguracionPartida.getJugador(2, 2);
+        } else if(cantidadDeJugadores==6) {
+            Jugador1=ConfiguracionPartida.getJugador(1, 1);
+            Jugador2=ConfiguracionPartida.getJugador(2, 1);
+            Jugador3=ConfiguracionPartida.getJugador(3, 1);
+            Jugador4=ConfiguracionPartida.getJugador(1, 2);
+            Jugador5=ConfiguracionPartida.getJugador(2, 2);
+            Jugador6=ConfiguracionPartida.getJugador(3, 2);
+        } else if(cantidadDeJugadores==8) {
+            Jugador1=ConfiguracionPartida.getJugador(1, 1);
+            Jugador2=ConfiguracionPartida.getJugador(2, 1);
+            Jugador3=ConfiguracionPartida.getJugador(1, 2);
+            Jugador4=ConfiguracionPartida.getJugador(2, 2);
+            Jugador5=ConfiguracionPartida.getJugador(1, 3);
+            Jugador6=ConfiguracionPartida.getJugador(2, 3);
+            Jugador7=ConfiguracionPartida.getJugador(1, 4);
+            Jugador8=ConfiguracionPartida.getJugador(2, 4);
+        }
     }
     
     private void mostrarCartasDisponibles(String posicionAntigua) {

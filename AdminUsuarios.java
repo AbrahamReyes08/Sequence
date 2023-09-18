@@ -187,7 +187,7 @@ public class AdminUsuarios{
             String dirconfig = DirUsuario(username)+"/configuracion.ur";
             RandomAccessFile config = new RandomAccessFile(dirconfig,"rw");
             config.seek(0);
-            config.writeInt(0);
+            config.writeInt(2);
             config.writeBoolean(false);
         } catch (Exception ex) {
             

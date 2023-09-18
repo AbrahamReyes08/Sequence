@@ -89,7 +89,7 @@ public class Configuracion extends javax.swing.JFrame {
 
         buttonGroup1.add(Btn4);
         Btn4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        Btn4.setText("3 vs 3 (6 jugadores)");
+        Btn4.setText("2 vs 2 vs 2 (6 jugadores)");
         jPanel1.add(Btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, -1));
 
         buttonGroup1.add(Btn5);

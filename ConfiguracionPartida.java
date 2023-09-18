@@ -14,15 +14,15 @@ public class ConfiguracionPartida{
         
     }
     
-    Color negro = new Color(38,38,38);
-    Color celeste = new Color(92,225,230);
-    Color verde = new Color(193,255,114);
-    Color rojo = new Color(255,87,87);
-    Color anaranjado = new Color(255,145,77);
-    Color morado = new Color(203,108,230);
-    Color azul = new Color(84,106,221);
-    Color amarillo = new Color(225,222,89);
-    private static int cantjugadores;
+    static Color negro = new Color(38,38,38);
+    static Color celeste = new Color(92,225,230);
+    static Color verde = new Color(193,255,114);
+    static Color rojo = new Color(255,87,87);
+    static Color naranja = new Color(255,145,77);
+    static Color morado = new Color(203,108,230);
+    static Color azul = new Color(84,106,221);
+    static Color amarillo = new Color(225,222,89);
+    private static int cantjugadores=4;
     private static boolean compartircolor;
     private static ArrayList<String> equipo1;
     private static ArrayList<String> equipo2;
@@ -186,7 +186,7 @@ public class ConfiguracionPartida{
         return colores.get(aleatorio.nextInt(2));
     }
     
-    public String getJugador(int equipo, int pos){
+    public static String getJugador(int equipo, int pos){
         switch(equipo){
             case 1:
                 return equipo1.get(pos);
@@ -198,7 +198,7 @@ public class ConfiguracionPartida{
         return null;
     }
     
-    public String getColorPlayer(String username, int equipo){
+    public static String getColorPlayer(String username, int equipo){
         ArrayList<String> equipoverificar=null;
         switch(equipo){
             case 1:
@@ -238,7 +238,7 @@ public class ConfiguracionPartida{
             return "Verde";
         else if(color.equals(rojo))
             return "Rojo";
-        else if(color.equals(anaranjado))
+        else if(color.equals(naranja))
             return "Anaranjado";
         else if(color.equals(morado))
             return "Morado";
