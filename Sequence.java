@@ -110,6 +110,7 @@ public class Sequence implements ActionListener{
         fichasMazo();
         repartirColores();
         repartirJugadores();
+        establecerCantEquipos();
         if (cantidadDeJugadores==2) {
         asignarCartas(mazo1);
         asignarCartas(mazo2);
@@ -373,7 +374,8 @@ public class Sequence implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
             posicionActual = getBotonPosicionString(ae.getSource());
             yaNoHayCartas();
-            
+                    comprobarGane();
+                    comprobarEmpate();
                 if (posicionActual.equals("ordenar")) {
                     if(quiereOrdenar) {
                         quiereOrdenar=false;
@@ -806,78 +808,92 @@ public class Sequence implements ActionListener{
         
         String word = Character.toString(letra1) + Character.toString(letra2) + Character.toString(letra3);
             if(word.equals("JO1")){
-                if(cantidadDeJugadores==6 || cantidadDeJugadores==3) {
+                System.out.println(cantidadDeEquipos);
+                if(cantidadDeEquipos==3) {
                     if(turno.equals(Jugador1) && (tablero[y][x].charAt(1)=='1' || tablero[y][x].charAt(1)=='4')) {
                        JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                         return false;
                     }
-                } else if (cantidadDeJugadores!=6 || cantidadDeJugadores!=3) {
-                    if(turno.equals(Jugador1) && tablero[y][x].charAt(1)=='1' || tablero[y][x].charAt(1)=='3' || tablero[y][x].charAt(1)=='5' 
-                            || tablero[y][x].charAt(1)=='7') {
+                } 
+                if (cantidadDeEquipos==2) {
+                    if(turno.equals(Jugador1) && (tablero[y][x].charAt(1)=='1' || tablero[y][x].charAt(1)=='3' || tablero[y][x].charAt(1)=='5' 
+                            || tablero[y][x].charAt(1)=='7')) {
                        JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                         return false;
                     }
-                }else if(cantidadDeJugadores==6 || cantidadDeJugadores==3) {
-                    if(turno.equals(Jugador2) && tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='5' ) {
+                }
+                if(cantidadDeEquipos==3) {
+                    if(turno.equals(Jugador2) && (tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='5' )) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
                     }
-                } else if (cantidadDeJugadores!=6 || cantidadDeJugadores!=3) {
-                    if(turno.equals(Jugador2) && tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='4' || tablero[y][x].charAt(1)=='6'
-                            || tablero[y][x].charAt(1)=='8' ) {
+                } 
+                if (cantidadDeEquipos==2) {
+                    if(turno.equals(Jugador2) && (tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='4' || tablero[y][x].charAt(1)=='6'
+                            || tablero[y][x].charAt(1)=='8') ) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
                     }
-                }else if (cantidadDeJugadores==6 || cantidadDeJugadores==3) {
-                    if(turno.equals(Jugador3) && tablero[y][x].charAt(1)=='3' || tablero[y][x].charAt(1)=='6') {
+                }
+                if (cantidadDeEquipos==3) {
+                    if(turno.equals(Jugador3) && (tablero[y][x].charAt(1)=='3' || tablero[y][x].charAt(1)=='6')) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
                     }
-                } else if (cantidadDeJugadores!=6 || cantidadDeJugadores!=3) {
-                    if(turno.equals(Jugador3) && tablero[y][x].charAt(1)=='3' || tablero[y][x].charAt(1)=='1' || tablero[y][x].charAt(1)=='5' 
-                            || tablero[y][x].charAt(1)=='7') {
+                } 
+                if (cantidadDeEquipos==2) {
+                    if(turno.equals(Jugador3) && (tablero[y][x].charAt(1)=='3' || tablero[y][x].charAt(1)=='1' || tablero[y][x].charAt(1)=='5' 
+                            || tablero[y][x].charAt(1)=='7')) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
                     }
-                }else if(cantidadDeJugadores==6) {
-                    if(turno.equals(Jugador4) && tablero[y][x].charAt(1)=='4' || tablero[y][x].charAt(1)=='1') {
+                }
+                if(cantidadDeEquipos==3) {
+                    if(turno.equals(Jugador4) && (tablero[y][x].charAt(1)=='4' || tablero[y][x].charAt(1)=='1')) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
                     }                    
-                } else if(cantidadDeJugadores!=6) {
-                    if(turno.equals(Jugador4) && tablero[y][x].charAt(1)=='4' || tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='6' 
-                            || tablero[y][x].charAt(1)=='8' ) {
+                } 
+                if(cantidadDeEquipos==2) {
+                    if(turno.equals(Jugador4) && (tablero[y][x].charAt(1)=='4' || tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='6' 
+                            || tablero[y][x].charAt(1)=='8' )) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
                     }    
-                } else if(cantidadDeJugadores==6) {
-                    if(turno.equals(Jugador5) && tablero[y][x].charAt(1)=='5' || tablero[y][x].charAt(1)=='2') {
+                } 
+                if(cantidadDeEquipos==3) {
+                    if(turno.equals(Jugador5) && (tablero[y][x].charAt(1)=='5' || tablero[y][x].charAt(1)=='2')) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo .\nIntenta con otra.");
                     return false;
                     }                     
-                } else if (cantidadDeJugadores!=6) {
-                    if(turno.equals(Jugador5) && tablero[y][x].charAt(1)=='5' || tablero[y][x].charAt(1)=='1' || tablero[y][x].charAt(1)=='3'
-                            || tablero[y][x].charAt(1)=='7') {
+                } 
+                if (cantidadDeEquipos==2) {
+                    if(turno.equals(Jugador5) && (tablero[y][x].charAt(1)=='5' || tablero[y][x].charAt(1)=='1' || tablero[y][x].charAt(1)=='3'
+                            || tablero[y][x].charAt(1)=='7')) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
                     }     
-                }else if (cantidadDeJugadores==6) {
-                    if(turno.equals(Jugador6) && tablero[y][x].charAt(1)=='6' || tablero[y][x].charAt(1)=='3' ) {
+                }
+                if (cantidadDeEquipos==3) {
+                    if(turno.equals(Jugador6) && (tablero[y][x].charAt(1)=='6' || tablero[y][x].charAt(1)=='3' )) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
                     }
-                } else if(cantidadDeJugadores!=6) {
-                    if(turno.equals(Jugador6) && tablero[y][x].charAt(1)=='6' || tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='4'
-                            || tablero[y][x].charAt(1)=='8'  ) {
+                } 
+                if(cantidadDeEquipos==2) {
+                    if(turno.equals(Jugador6) && (tablero[y][x].charAt(1)=='6' || tablero[y][x].charAt(1)=='2' || tablero[y][x].charAt(1)=='4'
+                            || tablero[y][x].charAt(1)=='8'  )) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo\nIntenta con otra.");
                     return false;
                     }
-                } else if(turno.equals(Jugador7) && tablero[y][x].charAt(1)=='7' || tablero[y][x].charAt(1)=='5' || tablero[y][x].charAt(1)=='3' 
-                        || tablero[y][x].charAt(1)=='1' ) {
+                } 
+                if(turno.equals(Jugador7) && (tablero[y][x].charAt(1)=='7' || tablero[y][x].charAt(1)=='5' || tablero[y][x].charAt(1)=='3' 
+                        || tablero[y][x].charAt(1)=='1' )) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
-                } else if(turno.equals(Jugador8) && tablero[y][x].charAt(1)=='8' || tablero[y][x].charAt(1)=='6' || tablero[y][x].charAt(1)=='4'
-                        || tablero[y][x].charAt(1)=='2'  ) {
+                } 
+                if(turno.equals(Jugador8) && (tablero[y][x].charAt(1)=='8' || tablero[y][x].charAt(1)=='6' || tablero[y][x].charAt(1)=='4'
+                        || tablero[y][x].charAt(1)=='2'  )) {
                    JOptionPane.showMessageDialog(null, "No puedes quitar una ficha propia o de tu equipo.\nIntenta con otra.");
                     return false;
                 }
@@ -2410,13 +2426,13 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
     }
     
     private void cambiarTurnoEquipo() {
-        if (cantidadDeEquipos!=3 || cantidadDeEquipos!=6) {
+        if (cantidadDeEquipos==2) {
             if (turnoEquipo.equals("Equipo 1")) {
                 turnoEquipo="Equipo 2";
             } else {
                 turnoEquipo="Equipo 1";
             }
-        } else {
+        } else if (cantidadDeEquipos==3) {
             if (turnoEquipo.equals("Equipo 1")) {
                 turnoEquipo="Equipo 2";
             } else if (turnoEquipo.equals("Equipo 2")) {
@@ -2442,10 +2458,14 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
                     }
                    
                     if (num==96) {
+                        num=0;
+                        JOptionPane.showMessageDialog(null, "El juego ha terminado en empate ya no ha posiciones diponibles.");
                         if(cantidadDeEquipos==3)
                             setLogs(ConfiguracionPartida.getEquipo1(), ConfiguracionPartida.getEquipo2(), ConfiguracionPartida.getEquipo3(), 0);
                         else
                             setLogs(ConfiguracionPartida.getEquipo1(), ConfiguracionPartida.getEquipo2(), null, 1);
+                        AdminPantallas.AbrirMenuPrincipal();
+                        tab.dispose();
                     }
                 }
             }
