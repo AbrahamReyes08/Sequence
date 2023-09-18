@@ -224,10 +224,10 @@ public class ConfiguracionPartida{
                 color=colorequipo1.get(index);
                 break;
             case 2:
-                color=colorequipo1.get(index);
+                color=colorequipo2.get(index);
                 break;
             case 3:
-                color=colorequipo1.get(index);
+                color=colorequipo3.get(index);
                 break;
         }
         if(color.equals(negro))
