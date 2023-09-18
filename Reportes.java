@@ -18,6 +18,7 @@ public class Reportes extends javax.swing.JFrame {
             RegistrosTxT.setText(texto);
         } else
             RegistrosTxT.setText("Aun no hay registros de partidas jugadas");
+        PuntosTxT.setText("Mis puntos: "+useradmin.getPuntosUsuario(useradmin.getUserlog()));
     }
 
     @SuppressWarnings("unchecked")
@@ -25,9 +26,11 @@ public class Reportes extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        RegistrosTxT = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        RegistrosTxT = new javax.swing.JTextArea();
         Titulo = new javax.swing.JLabel();
         RegresarBtn = new javax.swing.JButton();
+        PuntosTxT = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -35,9 +38,11 @@ public class Reportes extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        RegistrosTxT.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        RegistrosTxT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPanel1.add(RegistrosTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 410, 320));
+        RegistrosTxT.setColumns(20);
+        RegistrosTxT.setRows(5);
+        jScrollPane1.setViewportView(RegistrosTxT);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 86, 410, 290));
 
         Titulo.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Titulo.setText("Registros de Partidas");
@@ -51,6 +56,11 @@ public class Reportes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(RegresarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, -1));
+
+        PuntosTxT.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        PuntosTxT.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        PuntosTxT.setText("Mis puntos:");
+        jPanel1.add(PuntosTxT, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
         Fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
@@ -76,9 +86,11 @@ public class Reportes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
-    private javax.swing.JTextField RegistrosTxT;
+    private javax.swing.JLabel PuntosTxT;
+    private javax.swing.JTextArea RegistrosTxT;
     private javax.swing.JButton RegresarBtn;
     private javax.swing.JLabel Titulo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
