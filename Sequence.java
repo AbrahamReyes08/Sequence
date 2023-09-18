@@ -44,6 +44,7 @@ public class Sequence implements ActionListener{
     
     Random random = new Random();
     Tablero tab= new Tablero();
+    AdminUsuarios admin=new AdminUsuarios();
     
     private int segundos;
     private String posicionActual;
@@ -83,7 +84,7 @@ public class Sequence implements ActionListener{
     Set<String> secuenciasSumadas = new HashSet<>();
     Set<String> secuenciasEnTablero = new HashSet<>();
 
-    public Sequence() {
+    public Sequence() throws IOException {
         inicializarTablero();
         tab.setVisible(true);
         añadirActionEvents();
@@ -2215,17 +2216,19 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
         if (cantidadDeEquipos==3) {
             if (secEquipo1==2) {
                 JOptionPane.showMessageDialog(null, "Ha ganada el equipo 1 al completar dos secuencias");
-                
+                admin.AgregarLog(mazo1, mazo2, mazo3, turno, fecha);
                 AdminPantallas.AbrirMenuPrincipal();
                 tab.dispose();
             }
             if (secEquipo2==2) {
                 JOptionPane.showMessageDialog(null, "Ha ganada el equipo 2 al completar dos secuencias");
+                admin.AgregarLog(mazo1, mazo2, mazo3, turno, fecha);
                 AdminPantallas.AbrirMenuPrincipal();
                 tab.dispose();
             }
             if (secEquipo3==2) {
                 JOptionPane.showMessageDialog(null, "Ha ganada el equipo 3 al completar dos secuencias");
+                admin.AgregarLog(mazo1, mazo2, mazo3, turno, fecha);
                 AdminPantallas.AbrirMenuPrincipal();
                 tab.dispose();
             }
@@ -2233,11 +2236,13 @@ private void restarPuntosSiSecuenciaNoExiste(String ficha, int x, int y) {
         if (cantidadDeEquipos==2) {
             if (secEquipo1==2) {
                 JOptionPane.showMessageDialog(null, "Ha ganada el equipo 1 al completar dos secuencias");
+                admin.AgregarLog(mazo1, mazo2, mazo3, turno, fecha);
                 AdminPantallas.AbrirMenuPrincipal();
                 tab.dispose();
             }
             if (secEquipo2==2) {
                 JOptionPane.showMessageDialog(null, "Ha ganada el equipo 2 al completar dos secuencias");
+                admin.AgregarLog(mazo1, mazo2, mazo3, turno, fecha);
                 AdminPantallas.AbrirMenuPrincipal();
                 tab.dispose();
             }
